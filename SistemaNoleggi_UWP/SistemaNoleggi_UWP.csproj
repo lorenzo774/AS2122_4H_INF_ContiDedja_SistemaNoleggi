@@ -155,9 +155,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Noleggio_Library">
-      <HintPath>..\Noleggio_Library\bin\Debug\net6.0\Noleggio_Library.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Noleggio_Library\Noleggio_Library.csproj">
+      <Project>{5ae7e78c-b6a9-4706-a9f4-f8d077bc81b0}</Project>
+      <Name>Noleggio_Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
