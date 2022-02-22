@@ -1,6 +1,6 @@
 ﻿namespace Noleggio_Library
 {
-    public class Class1
+    public class SistemaNoleggi
     {
 
     }
