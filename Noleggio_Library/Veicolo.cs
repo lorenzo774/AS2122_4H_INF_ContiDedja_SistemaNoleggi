@@ -18,5 +18,13 @@ namespace Noleggio_Library
             CostoVeicolo = costoVeicolo;
             TariffaGiornaliera = tariffaGiornaliera;
         }
+
+        public void AggiungiNoleggio(DateTime dataInizio, int durataNoleggio)
+        {
+            Noleggi.Add(new Noleggio(dataInizio, durataNoleggio));
+        }
+
+        public bool Disponibile() { return false; }
+        public decimal CalcolaRicavo() { return 0; }
     }
 }

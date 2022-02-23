@@ -12,7 +12,6 @@ namespace Noleggio_Library
         public Cliente Cliente { get; private set; }
         public Veicolo Veicolo { get; private set; }
 
-        public Noleggio(Cliente cliente, Veicolo veicolo, DateTime dataInizio, int durataNoleggio)
         {
             this.DataInizio = dataInizio;
             this.DurataNoleggio = durataNoleggio;
@@ -21,13 +20,5 @@ namespace Noleggio_Library
             Id = idIndex++;
         }
 
-        public decimal CalcolaCosto()
-        {
-            return 0;
-        }
-        public decimal CalcolaRicavo()
-        {
-            return Veicolo.TariffaGiornaliera * DurataNoleggio;
-        }
     }
 }
