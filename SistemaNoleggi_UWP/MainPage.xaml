@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <TextBlock TextWrapping="Wrap" Text="Prova" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Calibri" FontSize="36"/>
+    <Grid FocusVisualPrimaryBrush="White">
+        <TextBlock TextWrapping="Wrap" Text="Prova" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Calibri" FontSize="36" FocusVisualPrimaryBrush="White" Foreground="White"/>
     </Grid>
 </Page>
