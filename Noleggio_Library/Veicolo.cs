@@ -9,7 +9,7 @@ namespace Noleggio_Library
         public string Modello { get; }
         public decimal CostoVeicolo { get; set; }
         public decimal TariffaGiornaliera { get; set; }
-        public bool Disponibile = false;
+        public bool Disponibile { get; private set; }
 
         public Veicolo(string targa, string modello, decimal costoVeicolo, decimal tariffaGiornaliera)
         {
@@ -18,13 +18,5 @@ namespace Noleggio_Library
             CostoVeicolo = costoVeicolo;
             TariffaGiornaliera = tariffaGiornaliera;
         }
-
-        public void AggiungiNoleggio(DateTime dataInizio, int durataNoleggio)
-        {
-            Noleggi.Add(new Noleggio(dataInizio, durataNoleggio));
-        }
-
-        public bool Disponibile() { return false; }
-        public decimal CalcolaRicavo() { return 0; }
     }
 }

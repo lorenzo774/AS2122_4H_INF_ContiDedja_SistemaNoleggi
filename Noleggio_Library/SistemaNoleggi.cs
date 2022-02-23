@@ -56,7 +56,7 @@ namespace Noleggio_Library
         {
             Cliente cliente = CercaCliente(cF);
             Veicolo veicolo = CercaVeicolo(targa);
-            Noleggi.Add(new Noleggio(cliente, veicolo, dataInizio, durataGiorni));
+            Noleggi.Add(new Noleggio(dataInizio, durataGiorni, cliente, veicolo));
         }
     }
 }
