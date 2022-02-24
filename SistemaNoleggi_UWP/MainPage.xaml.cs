@@ -28,7 +28,13 @@ namespace SistemaNoleggi_UWP
         public MainPage()
         {
             this.InitializeComponent();
-            var sistemaNoleggi = new SistemaNoleggi();
+            sistemaNoleggi = new SistemaNoleggi();
+            sistemaNoleggi.AggiungiAutomobile("al;kf", "nope", 23, 22, 4);
+            sistemaNoleggi.AggiungiCliente("lollo", "conti", "a;lksdjf");
+            sistemaNoleggi.AggiungiNoleggio("al;kf", "a;lksdjf", 1, DateTime.Now);
+            sistemaNoleggi.AggiungiNoleggio("al;kf", "a;lksdjf", 1, DateTime.Now);
+            
         }
+
     }
 }

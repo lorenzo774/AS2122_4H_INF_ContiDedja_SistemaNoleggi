@@ -26,6 +26,13 @@ namespace Noleggio_Library
             }  }
         */
 
+        public SistemaNoleggi()
+        {
+            Clienti = new List<Cliente>();
+            Noleggi = new List<Noleggio>();
+            Veicoli = new List<Veicolo>();
+        }
+
 
         public Veicolo CercaVeicolo(string targa)
         {
