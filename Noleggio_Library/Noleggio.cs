@@ -12,6 +12,7 @@ namespace Noleggio_Library
         public Cliente Cliente { get; private set; }
         public Veicolo Veicolo { get; private set; }
 
+
         public Noleggio(DateTime dataInizio, int durataNoleggio, Cliente cliente, Veicolo veicolo)
         {
             this.DataInizio = dataInizio;
@@ -28,5 +29,11 @@ namespace Noleggio_Library
         }
 
         public decimal CalcolaCosto() { return 0; }
+
+        public override string ToString()
+        {
+            return $"{Id} {Cliente} {Veicolo}";
+        }
+
     }
 }

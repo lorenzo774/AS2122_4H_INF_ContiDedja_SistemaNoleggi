@@ -12,5 +12,10 @@
             Cognome = cognome;
             this.CF = CF;
         }
+
+        public override string ToString()
+        {
+            return $"{Cognome} {Nome}";
+        }
     }
 }

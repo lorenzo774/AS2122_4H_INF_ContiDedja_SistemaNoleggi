@@ -10,21 +10,6 @@ namespace Noleggio_Library
         public List<Noleggio> Noleggi { get; private set; }
         public List<Cliente> Clienti { get; private set; }
 
-        /*
-         public List<Noleggio> Noleggi {
-            get 
-            {
-                var noleggi = new List<Noleggio>();
-                foreach (Veicolo v in Veicoli)
-                {
-                    foreach (Noleggio n in v.Noleggi)
-                    {
-                        noleggi.Add(n);
-                    }
-                }
-                return noleggi;
-            }  }
-        */
 
         public SistemaNoleggi()
         {

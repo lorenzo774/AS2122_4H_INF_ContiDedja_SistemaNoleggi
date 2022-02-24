@@ -18,5 +18,10 @@ namespace Noleggio_Library
             CostoVeicolo = costoVeicolo;
             TariffaGiornaliera = tariffaGiornaliera;
         }
+
+        public override string ToString()
+        {
+            return $"{Targa} {Modello}";
+        }
     }
 }

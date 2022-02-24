@@ -11,7 +11,7 @@
 
     <Grid FocusVisualPrimaryBrush="White">
         <controls:DataGrid x:Name="grdNoleggi" AutoGenerateColumns="True" ItemsSource="{x:Bind sistemaNoleggi.Noleggi}" Margin="0,45,0,0"/>
-        <MenuBar Margin="0,0,0,960" Width="Auto" >
+        <MenuBar Width="Auto" VerticalAlignment="Top" Height="40" >
             <MenuBarItem Title="File">
                 <MenuFlyoutSubItem Text="New">
                     <MenuFlyoutItem Text="Plain Text Document"/>
