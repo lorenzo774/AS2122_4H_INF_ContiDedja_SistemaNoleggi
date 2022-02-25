@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="SistemaNoleggi_UWP.AddClientePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SistemaNoleggi_UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="500" Height="500">
+
+    <Grid>
+        <TextBlock Text="Aggiungi Cliente" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="40"></TextBlock>
+
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="182" Width="335">
+            <TextBox PlaceholderText="Inserisci Nome" Name="txtbox_Nome" HorizontalAlignment="Center" Height="50" Margin="0,10,0,122" Width="134"/>
+            <TextBox PlaceholderText="Inserisci Cognome" Name="txtbox_Cognome" HorizontalAlignment="Center" Height="50" Margin="0,66,0,66"/>
+            <TextBox PlaceholderText="Inserisci Codice Fiscale" Name="txtbox_Cf" HorizontalAlignment="Center" Height="50" Margin="0,122,0,10"/>
+        </Grid>
+
+        <Button Background="Transparent" Name="btn_Save_Click" Click="btn_Save" Width="130" Height="70" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Border Width="101" Height="50" CornerRadius="15" Background="LightGray"></Border>
+        </Button>
+    </Grid>
+</Page>
