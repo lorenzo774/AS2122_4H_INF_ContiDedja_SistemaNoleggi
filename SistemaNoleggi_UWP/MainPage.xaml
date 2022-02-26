@@ -12,23 +12,18 @@
     <Grid FocusVisualPrimaryBrush="White">
         <controls:DataGrid x:Name="grdNoleggi" AutoGenerateColumns="True" ItemsSource="{x:Bind sistemaNoleggi.Noleggi}" Margin="0,45,0,0"/>
         <MenuBar Width="Auto" VerticalAlignment="Top" Height="40" >
-            <MenuBarItem Title="File">
-                <MenuFlyoutSubItem Text="New">
-                    <MenuFlyoutItem Text="Plain Text Document"/>
-                    <MenuFlyoutItem Text="Rich Text Document"/>
-                    <MenuFlyoutItem Text="Other Formats..."/>
-                </MenuFlyoutSubItem>
-                <MenuFlyoutItem Text="Open..."/>
-                <MenuFlyoutItem Text="Save"/>
-                <MenuFlyoutSeparator/>
-                <MenuFlyoutItem Text="Exit"/>
+            <MenuBarItem Title="Aggiungi">
+                <MenuFlyoutItem Text="Noleggio"/>
+                <MenuFlyoutItem Text="Cliente" Click="OnClienteMenu_Click"/>
+                <MenuFlyoutItem Text="Automobile" Click="OnAutomobileMenu_Click"/>
+                <MenuFlyoutItem Text="Furgone"/>
             </MenuBarItem>
 
-            <MenuBarItem Title="Edit">
-                <MenuFlyoutItem Text="Undo"/>
-                <MenuFlyoutItem Text="Cut"/>
-                <MenuFlyoutItem Text="Copy"/>
-                <MenuFlyoutItem Text="Paste"/>
+            <MenuBarItem Title="Rimuovi">
+                <MenuFlyoutItem Text="Noleggio"/>
+                <MenuFlyoutItem Text="Cliente"/>
+                <MenuFlyoutItem Text="Automobile"/>
+                <MenuFlyoutItem Text="Furgone"/>
             </MenuBarItem>
 
             <MenuBarItem Title="Help">
