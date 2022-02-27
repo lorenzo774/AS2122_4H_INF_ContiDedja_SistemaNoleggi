@@ -10,8 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid FocusVisualPrimaryBrush="White">
-        <controls:DataGrid x:Name="grdNoleggi" AutoGenerateColumns="True" ItemsSource="{x:Bind sistemaNoleggi.Noleggi}" Margin="0,45,0,0"/>
-        <MenuBar Width="Auto" VerticalAlignment="Top" Height="40" >
+        <MenuBar Width="Auto" VerticalAlignment="Top" Height="40" Margin="50,0,0,0" >
             <MenuBarItem Title="Aggiungi">
                 <MenuFlyoutItem Text="Noleggio"/>
                 <MenuFlyoutItem Text="Cliente" Click="OnClienteMenu_Click"/>
@@ -30,5 +29,20 @@
                 <MenuFlyoutItem Text="About"/>
             </MenuBarItem>
         </MenuBar>
+
+        <controls:DataGrid x:Name="grdView" AutoGenerateColumns="True" ItemsSource="{x:Bind sistemaNoleggi.Noleggi}" Margin="50,40,0,0"/>
+
+        <Button Height="40" Width="50" VerticalAlignment="Top" Click="OnSplitViewBtn_Click" />
+
+        <SplitView x:Name="splViewItems" DisplayMode="CompactOverlay" CompactPaneLength="50" OpenPaneLength="150" IsPaneOpen="False" Margin="0,40,0,0">
+            <SplitView.Pane>
+                <StackPanel>
+                    <Button Content="Noleggi" Height="50" Background="Transparent" Click="OnSplitViewNoleggi_Click" HorizontalAlignment="Stretch"/>
+                    <Button Content="Veicoli" Height="50" Background="Transparent" Click="OnSplitViewVeicoli_Click" HorizontalAlignment="Stretch"/>
+                    <Button Content="Clienti" Height="50" Background="Transparent" Click="OnSplitViewClienti_Click" HorizontalAlignment="Stretch"/>
+                </StackPanel>
+            </SplitView.Pane>
+        </SplitView>
+
     </Grid>
 </Page>
