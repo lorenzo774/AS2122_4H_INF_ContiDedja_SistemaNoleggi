@@ -56,10 +56,8 @@ namespace Noleggio_Library
             Veicoli.Add(new Furgone(targa, modello, costo, tariffaGiornaliera, capacita));
         }
 
-        public void AggiungiNoleggio(string targa, string cF, int durataGiorni, DateTime dataInizio)
+        public void AggiungiNoleggio(DateTime dataInizio, int durataGiorni, Cliente cliente, Veicolo veicolo)
         {
-            Cliente cliente = CercaCliente(cF);
-            Veicolo veicolo = CercaVeicolo(targa);
             Noleggi.Add(new Noleggio(dataInizio, durataGiorni, cliente, veicolo));
         }
     }

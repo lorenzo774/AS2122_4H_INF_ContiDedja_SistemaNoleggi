@@ -4,16 +4,10 @@ using Windows.UI.Xaml.Navigation;
 using Noleggio_Library;
 using System;
 
-// Il modello di elemento Pagina vuota è documentato all'indirizzo https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace SistemaNoleggi_UWP
 {
-    /// <summary>
-    /// Pagina usata dall'utente per l'inserimento di una nuova automobile
-    /// </summary>
     public sealed partial class AddAutomobilePage : Page
     {
-
         public AddAutomobilePage()
         {
             this.InitializeComponent();

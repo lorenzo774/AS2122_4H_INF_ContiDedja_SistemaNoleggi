@@ -14,13 +14,15 @@
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="182" Width="335">
 
             <StackPanel>
-                <TextBox Header="Nome" PlaceholderText="Inserisci Nome" Name="txtbox_Nome" HorizontalAlignment="Center"/>
-                <TextBox Header="Cognome" PlaceholderText="Inserisci Cognome" Name="txtbox_Cognome" HorizontalAlignment="Center"/>
-                <TextBox Header="Codice Fiscale" PlaceholderText="Inserisci Codice Fiscale" Name="txtbox_Cf" HorizontalAlignment="Center"/>
+                <TextBox Header="Nome" PlaceholderText="Inserisci Nome" Name="txtbox_Nome"/>
+                <TextBox Header="Cognome" PlaceholderText="Inserisci Cognome" Name="txtbox_Cognome"/>
+                <TextBox Header="Codice Fiscale" PlaceholderText="Inserisci Codice Fiscale" Name="txtbox_Cf"/>
             </StackPanel>
         </Grid>
 
-        <Button Content="Salva" Name="OnbtnSalva" Click="OnbtnSalva_Click" VerticalAlignment="Bottom" Margin="153,0,0,0"/>
-        <Button Content="Annulla" Name="OnbtnAnnulla" Click="OnbtnAnnulla_Click" VerticalAlignment="Bottom" Margin="299,0,0,0"/>
+        <StackPanel Spacing="50" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button Content="Salva" Name="OnbtnSalva" Click="OnbtnSalva_Click"/>
+            <Button Content="Annulla" Name="OnbtnAnnulla" Click="OnbtnAnnulla_Click"/>
+        </StackPanel>
     </Grid>
 </Page>
