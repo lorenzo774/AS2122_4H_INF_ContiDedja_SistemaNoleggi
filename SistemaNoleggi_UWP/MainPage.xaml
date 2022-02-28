@@ -5,11 +5,35 @@
     xmlns:local="using:SistemaNoleggi_UWP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid FocusVisualPrimaryBrush="White">
+
+        <!--<SplitView x:Name="splViewItems" DisplayMode="CompactOverlay" CompactPaneLength="50" OpenPaneLength="150" IsPaneOpen="False" Margin="0,40,0,0">
+            <SplitView.Pane>
+                <StackPanel>
+                    <Button Content="Noleggi" Height="50" Background="Transparent" Click="OnSplitViewNoleggi_Click" HorizontalAlignment="Stretch"/>
+                    <Button Content="Veicoli" Height="50" Background="Transparent" Click="OnSplitViewVeicoli_Click" HorizontalAlignment="Stretch"/>
+                    <Button Content="Clienti" Height="50" Background="Transparent" Click="OnSplitViewClienti_Click" HorizontalAlignment="Stretch"/>
+                </StackPanel>
+            </SplitView.Pane>
+        </SplitView>-->
+
+            <NavigationView Loaded="NavigationView_Loaded" SelectionChanged="NavigationView_SelectionChanged">
+                <NavigationView.MenuItems>
+                    <NavigationViewItem Icon="Folder" Content="Noleggi" Tag="noleggi" />
+                <NavigationViewItem Icon="Favorite" Content="Veicoli" Tag="veicoli" />
+                    <NavigationViewItem Icon="People" Content="Clienti" Tag="clienti" />
+                </NavigationView.MenuItems>
+
+                <ScrollViewer>
+                    <Frame x:Name="ContentFrame">
+                    </Frame>
+                </ScrollViewer>
+            </NavigationView>
+        
+        
         <MenuBar Width="Auto" VerticalAlignment="Top" Height="40" Margin="50,0,0,0" >
             <MenuBarItem Title="Aggiungi">
                 <MenuFlyoutItem Text="Noleggio"/>
@@ -29,20 +53,6 @@
                 <MenuFlyoutItem Text="About"/>
             </MenuBarItem>
         </MenuBar>
-
-        <controls:DataGrid x:Name="grdView" AutoGenerateColumns="True" Margin="50,40,0,0"/>
-
-        <Button Height="40" Width="50" VerticalAlignment="Top" Click="OnSplitViewBtn_Click" />
-
-        <SplitView x:Name="splViewItems" DisplayMode="CompactOverlay" CompactPaneLength="50" OpenPaneLength="150" IsPaneOpen="False" Margin="0,40,0,0">
-            <SplitView.Pane>
-                <StackPanel>
-                    <Button Content="Noleggi" Height="50" Background="Transparent" Click="OnSplitViewNoleggi_Click" HorizontalAlignment="Stretch"/>
-                    <Button Content="Veicoli" Height="50" Background="Transparent" Click="OnSplitViewVeicoli_Click" HorizontalAlignment="Stretch"/>
-                    <Button Content="Clienti" Height="50" Background="Transparent" Click="OnSplitViewClienti_Click" HorizontalAlignment="Stretch"/>
-                </StackPanel>
-            </SplitView.Pane>
-        </SplitView>
-
+        
     </Grid>
 </Page>

@@ -4,7 +4,7 @@ namespace Noleggio_Library
 {
     public class Noleggio
     {
-        static private int idIndex = 0;
+        static private int id = 0;
 
         public int Id { get; private set; }
         public DateTime DataInizio { get; set; }
@@ -19,7 +19,7 @@ namespace Noleggio_Library
             this.DurataNoleggio = durataNoleggio;
             this.Cliente = cliente;
             this.Veicolo = veicolo;
-            Id = idIndex++;
+            Id = id++;
         }
 
 

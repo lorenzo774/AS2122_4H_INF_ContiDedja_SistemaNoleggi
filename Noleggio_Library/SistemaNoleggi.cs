@@ -22,6 +22,18 @@ namespace Noleggio_Library
         public List<Noleggio> Noleggi { get; private set; }
         public List<Cliente> Clienti { get; private set; }
 
+        public List<Automobile> Automobili { 
+            get 
+            { 
+                return Veicoli.OfType<Automobile>().ToList();
+            } 
+        }
+        public List<Furgone> Furgoni { 
+            get 
+            {
+                return Veicoli.OfType<Furgone>().ToList();
+            } 
+        }
 
         public SistemaNoleggi()
         {
