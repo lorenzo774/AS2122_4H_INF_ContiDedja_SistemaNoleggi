@@ -122,6 +122,9 @@
     <Compile Include="AddClientePage.xaml.cs">
       <DependentUpon>AddClientePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddFurgonePage.xaml.cs">
+      <DependentUpon>AddFurgonePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddNoleggioPage.xaml.cs">
       <DependentUpon>AddNoleggioPage.xaml</DependentUpon>
     </Compile>
@@ -167,6 +170,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddClientePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddFurgonePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
