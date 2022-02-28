@@ -1,14 +1,13 @@
-﻿using Windows.UI.Xaml;
+﻿using System;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
 using Noleggio_Library;
-using System;
 
 namespace SistemaNoleggi_UWP
 {
-    public sealed partial class AddAutomobilePage : Page
+    public sealed partial class AddFurgonePage : Page
     {
-        public AddAutomobilePage()
+        public AddFurgonePage()
         {
             this.InitializeComponent();
         }
@@ -19,9 +18,10 @@ namespace SistemaNoleggi_UWP
             string modello = txtModello.Text;
             decimal costoVeicolo = Convert.ToDecimal(txtCostoVeicolo.Text);
             decimal tariffaGiornaliera = Convert.ToDecimal(txtTariffa.Text);
-            int numeroPosti = int.Parse(txtNumeroPosti.Text);
+            int capacita = int.Parse(txtCapacita.Text);
 
-            SistemaNoleggi.Instance.AggiungiAutomobile(targa, modello, costoVeicolo, tariffaGiornaliera, numeroPosti);
+            SistemaNoleggi.Instance.AggiungiFurgone(targa, modello, costoVeicolo, tariffaGiornaliera, capacita);
+
             Frame.GoBack();
         }
 
