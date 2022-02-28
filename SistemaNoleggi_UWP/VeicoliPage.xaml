@@ -12,9 +12,9 @@
     <Grid Padding="40">
         <StackPanel>
             <TextBlock Text="Automobili" FontSize="50" />
-            <controls:DataGrid x:Name="grdViewAutomobili" AutoGenerateColumns="True" Margin="0,80,0,0" />
-            <TextBlock Text="Furgoni" FontSize="50" />
-            <controls:DataGrid x:Name="grdViewFurgoni" AutoGenerateColumns="True" Margin="0,80,0,0" />
+            <controls:DataGrid x:Name="grdViewAutomobili" AutoGenerateColumns="True" />
+            <TextBlock Text="Furgoni" FontSize="50" Margin="0,100,0,0" />
+            <controls:DataGrid x:Name="grdViewFurgoni" AutoGenerateColumns="True" />
         </StackPanel>
     </Grid>
 </Page>

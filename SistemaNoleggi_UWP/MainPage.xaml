@@ -36,7 +36,7 @@
         
         <MenuBar Width="Auto" VerticalAlignment="Top" Height="40" Margin="50,0,0,0" >
             <MenuBarItem Title="Aggiungi">
-                <MenuFlyoutItem Text="Noleggio"/>
+                <MenuFlyoutItem Text="Noleggio" Click="OnNoleggioMenu_Click"/>
                 <MenuFlyoutItem Text="Cliente" Click="OnClienteMenu_Click"/>
                 <MenuFlyoutItem Text="Automobile" Click="OnAutomobileMenu_Click"/>
                 <MenuFlyoutItem Text="Furgone" Click="OnFurgoneMenu_Click"/>

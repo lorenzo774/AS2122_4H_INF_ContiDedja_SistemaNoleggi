@@ -8,8 +8,8 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <TextBlock Text="Aggiungi Noleggio" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="40"></TextBlock>
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Text="Aggiungi Noleggio" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="40" Margin="0,54,0,0"></TextBlock>
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <ComboBox Name="cmbClienti" Header="Clienti" HorizontalAlignment="Stretch"></ComboBox>
@@ -19,10 +19,10 @@
         </StackPanel>
 
 
-        <StackPanel Spacing="50" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-            <Button Content="Salva" Name="btnSalva" Click="OnbtnSalva_Click" Width="150" Height="40" HorizontalAlignment="Center" VerticalAlignment="Bottom"></Button>
-            <Button Content="Annulla" Name="btnAnnulla" Click="OnbtnAnnulla_Click" Width="150" Height="40" HorizontalAlignment="Center" VerticalAlignment="Bottom"></Button>
+        <StackPanel Spacing="50" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,530,0,0">
+            <Button Content="Salva" x:Name="btnSalva" Click="OnbtnSalva_Click" Width="150" Height="40"/>
+            <Button Content="Annulla" x:Name="btnAnnulla" Click="OnbtnAnnulla_Click" Width="150" Height="40"/>
         </StackPanel>
-        
+
     </Grid>
 </Page>

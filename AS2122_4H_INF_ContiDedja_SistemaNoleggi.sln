@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
+# Blend for Visual Studio Version 17
 VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaNoleggi_UWP", "SistemaNoleggi_UWP\SistemaNoleggi_UWP.csproj", "{27CA1614-E6F3-4749-B6C9-9E0424B60B6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noleggio_Library", "Noleggio_Library\Noleggio_Library.csproj", "{5AE7E78C-B6A9-4706-A9F4-F8D077BC81B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Noleggio_Library", "Noleggio_Library\Noleggio_Library.csproj", "{5AE7E78C-B6A9-4706-A9F4-F8D077BC81B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

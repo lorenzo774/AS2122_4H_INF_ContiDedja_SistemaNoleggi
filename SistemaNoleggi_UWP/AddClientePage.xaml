@@ -8,21 +8,16 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="500" Height="500">
 
-    <Grid>
-        <TextBlock Text="Aggiungi Cliente" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="40"></TextBlock>
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="417">
+        <TextBlock Text="Aggiungi Cliente" VerticalAlignment="Top"  FontSize="40"></TextBlock>
 
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="182" Width="335">
-
-            <StackPanel>
-                <TextBox Header="Nome" PlaceholderText="Inserisci Nome" Name="txtbox_Nome"/>
-                <TextBox Header="Cognome" PlaceholderText="Inserisci Cognome" Name="txtbox_Cognome"/>
-                <TextBox Header="Codice Fiscale" PlaceholderText="Inserisci Codice Fiscale" Name="txtbox_Cf"/>
-            </StackPanel>
-        </Grid>
-
-        <StackPanel Spacing="50" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-            <Button Content="Salva" Name="OnbtnSalva" Click="OnbtnSalva_Click"/>
-            <Button Content="Annulla" Name="OnbtnAnnulla" Click="OnbtnAnnulla_Click"/>
+        <StackPanel Margin="0,100,0,0">
+            <TextBox Header="Nome" PlaceholderText="Inserisci Nome" Name="txtbox_Nome"/>
+            <TextBox Header="Cognome" PlaceholderText="Inserisci Cognome" Name="txtbox_Cognome"/>
+            <TextBox Header="Codice Fiscale" PlaceholderText="Inserisci Codice Fiscale" Name="txtbox_Cf"/>
         </StackPanel>
+
+        <Button Content="Salva" x:Name="OnbtnSalva" Click="OnbtnSalva_Click" Margin="0,385,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button Content="Annulla" x:Name="OnbtnAnnulla" Click="OnbtnAnnulla_Click" Margin="194,385,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Page>

@@ -34,12 +34,17 @@ namespace SistemaNoleggi_UWP
         {
             Frame.Navigate(typeof(AddFurgonePage));
         }
+        
+        private void OnNoleggioMenu_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AddNoleggioPage));
+        }
 
         #endregion
 
         private void NavigationView_Loaded(object sender, RoutedEventArgs e)
         {
-            //ContentFrame.Navigate(typeof(NoleggiPage));
+            ContentFrame.Navigate(typeof(NoleggiPage));
         }
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -67,5 +72,6 @@ namespace SistemaNoleggi_UWP
                 }
             }
         }
+
     }
 }

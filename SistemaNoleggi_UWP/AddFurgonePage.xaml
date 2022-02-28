@@ -6,12 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
 
-    <Grid>
-        <TextBlock Text="Aggiungi Furgone" VerticalAlignment="Top" TextAlignment="Center" FontSize="40" Margin="0,66,0,0"/>
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Text="Aggiungi Furgone" VerticalAlignment="Top" TextAlignment="Center" FontSize="40" Margin="0,10,0,0"/>
 
-        <StackPanel Margin="255,191,254,236" >
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="467">
             <TextBox Header="Targa" PlaceholderText="Inserisci targa" x:Name="txtTarga" Margin="0,0,0,15" />
             <TextBox Header="Modello" PlaceholderText="Inserisci modello" x:Name="txtModello" Margin="0,0,0,15" />
             <TextBox Header="Costo Veicolo" PlaceholderText="Inserisci costo veicolo" x:Name="txtCostoVeicolo" Margin="0,0,0,15" />
@@ -19,7 +19,7 @@
             <TextBox Header="Capacitá" PlaceholderText="Inserisci capacitá" x:Name="txtCapacita" Margin="0,0,0,15" />
         </StackPanel>
 
-        <Button x:Name="btnSalva" Margin="255,625,0,0" VerticalAlignment="Top" Width="150" Height="47" Content="Salva" Click="OnBtnSalva_Click"/>
-        <Button x:Name="btnAnnulla" Margin="596,625,0,0" VerticalAlignment="Top" Width="150" Height="47" Content="Annulla" Click="OnBtnAnnulla_Click"/>
+        <Button x:Name="btnSalva" VerticalAlignment="Top" Height="47" Content="Salva" Click="OnBtnSalva_Click" Margin="15,541,0,0" Width="156"/>
+        <Button x:Name="btnAnnulla" VerticalAlignment="Top" Height="47" Content="Annulla" Click="OnBtnAnnulla_Click" Margin="340,541,0,0" Width="156"/>
     </Grid>
 </Page>

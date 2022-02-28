@@ -10,6 +10,8 @@ namespace SistemaNoleggi_UWP
         public AddNoleggioPage()
         {
             this.InitializeComponent();
+            cmbClienti.ItemsSource = SistemaNoleggi.Instance.Clienti;
+            cmbVeicoli.ItemsSource = SistemaNoleggi.Instance.Veicoli;
         }
 
         private void OnbtnSalva_Click(object sender, RoutedEventArgs e)
@@ -22,14 +24,6 @@ namespace SistemaNoleggi_UWP
         private void OnbtnAnnulla_Click(object sender, RoutedEventArgs e)
         {
             Frame.GoBack();
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            SistemaNoleggi sistemaNoleggi = e.Parameter as SistemaNoleggi;
-            
-            cmbClienti.ItemsSource = sistemaNoleggi.Clienti;
-            cmbVeicoli.ItemsSource = sistemaNoleggi.Veicoli;
         }
     }
 }
