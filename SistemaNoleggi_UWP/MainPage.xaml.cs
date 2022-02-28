@@ -30,6 +30,11 @@ namespace SistemaNoleggi_UWP
             Frame.Navigate(typeof(AddAutomobilePage));
         }
 
+        private void OnFurgoneMenu_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AddFurgonePage));
+        }
+
         #endregion
 
         private void NavigationView_Loaded(object sender, RoutedEventArgs e)

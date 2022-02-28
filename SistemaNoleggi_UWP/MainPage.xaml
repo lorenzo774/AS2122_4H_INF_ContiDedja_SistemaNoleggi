@@ -39,7 +39,7 @@
                 <MenuFlyoutItem Text="Noleggio"/>
                 <MenuFlyoutItem Text="Cliente" Click="OnClienteMenu_Click"/>
                 <MenuFlyoutItem Text="Automobile" Click="OnAutomobileMenu_Click"/>
-                <MenuFlyoutItem Text="Furgone"/>
+                <MenuFlyoutItem Text="Furgone" Click="OnFurgoneMenu_Click"/>
             </MenuBarItem>
 
             <MenuBarItem Title="Rimuovi">
