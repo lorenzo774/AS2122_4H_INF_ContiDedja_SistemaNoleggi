@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Noleggio_Library.Automobile">
+    <Position X="0.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Automobile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Noleggio_Library.Cliente">
+    <Position X="4.75" Y="5.25" Width="1.5" />
+    <Members>
+      <Method Name="ToString" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAgBAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Cliente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Noleggio_Library.Furgone">
+    <Position X="2.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Furgone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Noleggio_Library.Noleggio">
+    <Position X="8.5" Y="5" Width="1.5" />
+    <Members>
+      <Field Name="id" Hidden="true" />
+      <Method Name="ToString" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAQSAAAAAAAAAgAAAAAAAIIAAAgA=</HashCode>
+      <FileName>Noleggio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Noleggio_Library.SistemaNoleggi">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <Members>
+      <Field Name="instance" Hidden="true" />
+      <Property Name="Instance" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQCAAAQAAEACIAQAAAABAAAAAQAAABAAgAAA=</HashCode>
+      <FileName>SistemaNoleggi.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Noleggi" />
+      <Property Name="Clienti" />
+      <Property Name="Veicoli" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Noleggio_Library.Veicolo">
+    <Position X="1.75" Y="1" Width="1.5" />
+    <Members>
+      <Method Name="ToString" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AIEAAAAAAAAAAQAEAAAAAAEAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Veicolo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

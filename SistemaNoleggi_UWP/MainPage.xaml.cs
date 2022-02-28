@@ -16,7 +16,6 @@ namespace SistemaNoleggi_UWP
         public MainPage()
         {
             this.InitializeComponent();
-            grdView.ItemsSource = SistemaNoleggi.Instance.Noleggi;
         }
 
         #region MenuBar buttons
@@ -33,28 +32,35 @@ namespace SistemaNoleggi_UWP
 
         #endregion
 
-        #region SplitView buttons
-
-        private void OnSplitViewBtn_Click(object sender, RoutedEventArgs e)
+        private void NavigationView_Loaded(object sender, RoutedEventArgs e)
         {
-            splViewItems.IsPaneOpen = !splViewItems.IsPaneOpen;
+            //ContentFrame.Navigate(typeof(NoleggiPage));
         }
 
-        private void OnSplitViewClienti_Click(object sender, RoutedEventArgs e)
+        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-            grdView.ItemsSource = SistemaNoleggi.Instance.Clienti;
-        }
+            if (args.IsSettingsSelected)
+            {
 
-        private void OnSplitViewVeicoli_Click(object sender, RoutedEventArgs e)
-        {
-            grdView.ItemsSource = SistemaNoleggi.Instance.Veicoli;
+            }
+            else
+            {
+                NavigationViewItem item = args.SelectedItem as NavigationViewItem;
+                switch (item.Tag.ToString())
+                {
+                    case "noleggi":
+                        ContentFrame.Navigate(typeof(NoleggiPage));
+                        break;
+                    case "clienti":
+                        ContentFrame.Navigate(typeof(ClientiPage));
+                        break;
+                    case "veicoli":
+                        ContentFrame.Navigate(typeof(VeicoliPage));
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
-
-        private void OnSplitViewNoleggi_Click(object sender, RoutedEventArgs e)
-        {
-            grdView.ItemsSource = SistemaNoleggi.Instance.Noleggi;
-        }
-        #endregion
-
     }
 }
