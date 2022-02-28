@@ -122,6 +122,9 @@
     <Compile Include="AddClientePage.xaml.cs">
       <DependentUpon>AddClientePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddNoleggioPage.xaml.cs">
+      <DependentUpon>AddNoleggioPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -155,6 +158,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddClientePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddNoleggioPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

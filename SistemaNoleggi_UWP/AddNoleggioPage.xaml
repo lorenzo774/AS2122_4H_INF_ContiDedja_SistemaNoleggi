@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="SistemaNoleggi_UWP.AddNoleggioPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SistemaNoleggi_UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <TextBlock Text="Aggiungi Noleggio" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="40"></TextBlock>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ComboBox Name="cmbClienti" HorizontalAlignment="Center" Margin="10"></ComboBox>
+            <ComboBox Name="cmbVeicoli" HorizontalAlignment="Center" Margin="10"></ComboBox>
+            <TextBox Name="txtboxDurata" PlaceholderText="Inserisci Durata Noleggio" HorizontalAlignment="Center" Margin="10"/>
+            <DatePicker Name="datepickerData" Header="Data d'inizio" HorizontalAlignment="Center" Margin="10"></DatePicker>
+        </StackPanel>
+
+
+        <StackPanel Spacing="50" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button Content="Salva" Name="btnSalva" Click="OnbtnSalva_Click" Width="150" Height="40" HorizontalAlignment="Center" VerticalAlignment="Bottom"></Button>
+            <Button Content="Annulla" Name="btnAnnulla" Click="OnbtnAnnulla_Click" Width="150" Height="40" HorizontalAlignment="Center" VerticalAlignment="Bottom"></Button>
+        </StackPanel>
+        
+    </Grid>
+</Page>

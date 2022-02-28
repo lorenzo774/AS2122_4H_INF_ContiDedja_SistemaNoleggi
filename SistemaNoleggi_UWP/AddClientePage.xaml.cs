@@ -18,13 +18,8 @@ using Windows.ApplicationModel.Core;
 using Windows.UI;
 using Windows.UI.Popups;
 
-// Il modello di elemento Pagina vuota è documentato all'indirizzo https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace SistemaNoleggi_UWP
 {
-    /// <summary>
-    /// Pagina vuota che può essere usata autonomamente oppure per l'esplorazione all'interno di un frame.
-    /// </summary>
     public sealed partial class AddClientePage : Page
     {
         public Cliente Cliente { get; private set; }
@@ -34,7 +29,7 @@ namespace SistemaNoleggi_UWP
             this.InitializeComponent();
         }
 
-        private void btn_Save(object sender, RoutedEventArgs e)
+        private void OnbtnSalva_Click(object sender, RoutedEventArgs e)
         {
             if (txtbox_Nome.Text == "" || txtbox_Cognome.Text == "" || txtbox_Cf.Text == "")
             {
@@ -43,6 +38,13 @@ namespace SistemaNoleggi_UWP
             }
 
             Cliente = new Cliente(txtbox_Nome.Text, txtbox_Cognome.Text, txtbox_Cf.Text);
+            
+            Frame.Navigate(typeof(MainPage), Cliente);
+        }
+
+        private void OnbtnAnnulla_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage));
         }
     }
 }
