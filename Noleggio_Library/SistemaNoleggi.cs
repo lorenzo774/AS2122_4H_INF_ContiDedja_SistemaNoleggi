@@ -6,6 +6,18 @@ namespace Noleggio_Library
 {
     public class SistemaNoleggi
     {
+        public static SistemaNoleggi Instance {
+            get 
+            { 
+                if(instance == null)
+                {
+                    instance = new SistemaNoleggi();
+                }
+                return instance;
+            }
+        }
+        private static SistemaNoleggi instance;
+
         public List<Veicolo> Veicoli { get; private set; }
         public List<Noleggio> Noleggi { get; private set; }
         public List<Cliente> Clienti { get; private set; }

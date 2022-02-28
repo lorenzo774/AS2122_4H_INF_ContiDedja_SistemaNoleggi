@@ -30,7 +30,7 @@
             </MenuBarItem>
         </MenuBar>
 
-        <controls:DataGrid x:Name="grdView" AutoGenerateColumns="True" ItemsSource="{x:Bind sistemaNoleggi.Noleggi}" Margin="50,40,0,0"/>
+        <controls:DataGrid x:Name="grdView" AutoGenerateColumns="True" Margin="50,40,0,0"/>
 
         <Button Height="40" Width="50" VerticalAlignment="Top" Click="OnSplitViewBtn_Click" />
 

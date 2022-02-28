@@ -14,19 +14,9 @@ namespace SistemaNoleggi_UWP
     public sealed partial class AddAutomobilePage : Page
     {
 
-        private SistemaNoleggi sistemaNoleggi;
-
         public AddAutomobilePage()
         {
             this.InitializeComponent();
-        }
-
-        // Override di Navigated to per ottenere il valore passato navigando su questa page
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            Console.WriteLine(e.Parameter);
-            var value = e.Parameter as SistemaNoleggi; 
-            sistemaNoleggi = value;
         }
 
         private void OnBtnSalva_Click(object sender, RoutedEventArgs e)
@@ -37,7 +27,7 @@ namespace SistemaNoleggi_UWP
             decimal tariffaGiornaliera = Convert.ToDecimal(txtTariffa.Text);
             int numeroPosti = int.Parse(txtNumeroPosti.Text);
 
-            sistemaNoleggi.AggiungiAutomobile(targa, modello, costoVeicolo, tariffaGiornaliera, numeroPosti);
+            SistemaNoleggi.Instance.AggiungiAutomobile(targa, modello, costoVeicolo, tariffaGiornaliera, numeroPosti);
             Frame.GoBack();
         }
 
