@@ -1,53 +1,60 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Controls;
 using Noleggio_Library;
-using Windows.UI.Popups;
-using Windows.UI.ViewManagement;
-using Windows.ApplicationModel.Core;
-using Windows.UI;
+using Windows.UI.Xaml.Navigation;
 
 // Il modello di elemento Pagina vuota è documentato all'indirizzo https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x410
 
 namespace SistemaNoleggi_UWP
 {
     /// <summary>
-    /// Pagina vuota che può essere usata autonomamente oppure per l'esplorazione all'interno di un frame.
+    /// Prima pagina
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private SistemaNoleggi sistemaNoleggi;
-
         public MainPage()
         {
             this.InitializeComponent();
-
-            sistemaNoleggi = new SistemaNoleggi();
-            sistemaNoleggi.AggiungiAutomobile("al;kf", "nope", 23, 22, 4);
-            sistemaNoleggi.AggiungiCliente("lollo", "conti", "a;lksdjf");
-            sistemaNoleggi.AggiungiNoleggio("al;kf", "a;lksdjf", 1, DateTime.Now);
-            sistemaNoleggi.AggiungiNoleggio("al;kf", "a;lksdjf", 1, DateTime.Now);
+            grdView.ItemsSource = SistemaNoleggi.Instance.Noleggi;
         }
+
+        #region MenuBar buttons
 
         private void OnClienteMenu_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(AddClientePage));
+            Frame.Navigate(typeof(AddClientePage));
         }
 
         private void OnAutomobileMenu_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(AddAutomobilePage));
+            Frame.Navigate(typeof(AddAutomobilePage));
         }
+
+        #endregion
+
+        #region SplitView buttons
+
+        private void OnSplitViewBtn_Click(object sender, RoutedEventArgs e)
+        {
+            splViewItems.IsPaneOpen = !splViewItems.IsPaneOpen;
+        }
+
+        private void OnSplitViewClienti_Click(object sender, RoutedEventArgs e)
+        {
+            grdView.ItemsSource = SistemaNoleggi.Instance.Clienti;
+        }
+
+        private void OnSplitViewVeicoli_Click(object sender, RoutedEventArgs e)
+        {
+            grdView.ItemsSource = SistemaNoleggi.Instance.Veicoli;
+        }
+
+        private void OnSplitViewNoleggi_Click(object sender, RoutedEventArgs e)
+        {
+            grdView.ItemsSource = SistemaNoleggi.Instance.Noleggi;
+        }
+        #endregion
+
     }
 }
