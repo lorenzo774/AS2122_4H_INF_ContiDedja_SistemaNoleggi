@@ -2,7 +2,7 @@
     x:Class="SistemaNoleggi_UWP.VeicoliPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:SistemaNoleggi_UWP"
+    xmlns:local="using:Noleggio_Library"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -11,10 +11,77 @@
 
     <Grid Padding="40">
         <StackPanel>
-            <TextBlock Text="Automobili" FontSize="50" />
-            <controls:DataGrid x:Name="grdViewAutomobili" AutoGenerateColumns="True" />
+
+            <TextBlock Text="Automobili" FontSize="50"/>
+
+            <ListView x:Name="listViewAutomobili">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Automobile">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Numeroposti" Padding="3"></TextBlock>
+                                    <TextBlock Text="{x:Bind NumeroPosti}" Padding="3"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Targa" Padding="3"></TextBlock>
+                                    <TextBlock Text="{x:Bind Targa}" Padding="3"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Modello " Padding="3"></TextBlock>
+                                    <TextBlock Text="{x:Bind Modello}" Padding="3"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Costo Veicolo " Padding="3"></TextBlock>
+                                    <TextBlock Text="{x:Bind CostoVeicolo}" Padding="3"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Disponibilitá " Padding="3"></TextBlock>
+                                    <TextBlock Text="{x:Bind Disponibile}" Padding="3"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                            <Button Content="Rimuovi" Click="removeAutomobile_Click"></Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
             <TextBlock Text="Furgoni" FontSize="50" Margin="0,100,0,0" />
-            <controls:DataGrid x:Name="grdViewFurgoni" AutoGenerateColumns="True" />
+
+            <ListView x:Name="listViewFurgoni">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Furgone">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Capacitá" Padding="3"></TextBlock>
+                                    <TextBlock Text="{x:Bind Capacita}" Padding="3"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Targa" Padding="3"></TextBlock>
+                                    <TextBlock Text="{x:Bind Targa}" Padding="3"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Modello " Padding="3"></TextBlock>
+                                    <TextBlock Text="{x:Bind Modello}" Padding="3"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Costo Veicolo " Padding="3"></TextBlock>
+                                    <TextBlock Text="{x:Bind CostoVeicolo}" Padding="3"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Disponibilitá " Padding="3"></TextBlock>
+                                    <TextBlock Text="{x:Bind Disponibile}" Padding="3"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                            <Button Content="Rimuovi" Click="removeFurgone_Click"></Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        
+            
         </StackPanel>
     </Grid>
 </Page>

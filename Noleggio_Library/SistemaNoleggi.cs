@@ -72,5 +72,15 @@ namespace Noleggio_Library
         {
             Noleggi.Add(new Noleggio(dataInizio, durataGiorni, cliente, veicolo));
         }
+
+        public void RimuoviCliente(Cliente cliente)
+        {
+            Clienti.Remove(cliente);
+        }
+
+        public void RimuoviVeicolo(Veicolo veicolo)
+        {
+            Veicoli.Remove(veicolo);
+        }
     }
 }

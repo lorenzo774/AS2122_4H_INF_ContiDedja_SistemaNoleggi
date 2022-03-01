@@ -1,20 +1,32 @@
 ﻿using Windows.UI.Xaml.Controls;
 using Noleggio_Library;
-
-// Il modello di elemento Pagina vuota è documentato all'indirizzo https://go.microsoft.com/fwlink/?LinkId=234238
+using Windows.UI.Xaml;
+using Windows.UI.Popups;
 
 namespace SistemaNoleggi_UWP
 {
-    /// <summary>
-    /// Pagina vuota che può essere usata autonomamente oppure per l'esplorazione all'interno di un frame.
-    /// </summary>
     public sealed partial class VeicoliPage : Page
     {
         public VeicoliPage()
         {
             this.InitializeComponent();
-            grdViewAutomobili.ItemsSource = SistemaNoleggi.Instance.Automobili;
-            grdViewFurgoni.ItemsSource = SistemaNoleggi.Instance.Furgoni;
+
+            listViewFurgoni.ItemsSource = SistemaNoleggi.Instance.Furgoni;
+            listViewAutomobili.ItemsSource = SistemaNoleggi.Instance.Automobili;
+        }
+
+        private void removeAutomobile_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var veicolo = (sender as Button).DataContext as Veicolo;
+            SistemaNoleggi.Instance.RimuoviVeicolo(veicolo);
+            listViewAutomobili.ItemsSource = SistemaNoleggi.Instance.Automobili;
+        }
+
+        private void removeFurgone_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var veicolo = (sender as Button).DataContext as Veicolo;
+            SistemaNoleggi.Instance.RimuoviVeicolo(veicolo);
+            listViewFurgoni.ItemsSource = SistemaNoleggi.Instance.Furgoni;
         }
     }
 }
