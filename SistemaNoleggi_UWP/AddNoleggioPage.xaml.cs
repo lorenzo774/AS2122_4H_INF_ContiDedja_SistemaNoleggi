@@ -1,7 +1,7 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
 using Noleggio_Library;
+using System;
 
 namespace SistemaNoleggi_UWP
 {
@@ -16,8 +16,16 @@ namespace SistemaNoleggi_UWP
 
         private void OnbtnSalva_Click(object sender, RoutedEventArgs e)
         {
-            SistemaNoleggi.Instance.AggiungiNoleggio(datepickerData.Date.DateTime, int.Parse(txtboxDurata.Text), (Cliente)cmbClienti.SelectedItem, (Veicolo)cmbVeicoli.SelectedItem);
+            int durata;
 
+            if(cmbClienti.SelectedItem == null || !int.TryParse(txtboxDurata.Text, out durata) 
+                || !(cmbClienti.SelectedItem is Cliente) || !(cmbVeicoli.SelectedItem is Veicolo) || datepickerData.Date.DateTime == null || DateTime.Now.CompareTo(datepickerData.Date.DateTime) > 0)
+            {
+                new ErrorDialog().Show();
+                return;
+            }
+
+            SistemaNoleggi.Instance.AggiungiNoleggio(datepickerData.Date.DateTime, durata, (Cliente)cmbClienti.SelectedItem, (Veicolo)cmbVeicoli.SelectedItem);
             Frame.GoBack();
         }
 
