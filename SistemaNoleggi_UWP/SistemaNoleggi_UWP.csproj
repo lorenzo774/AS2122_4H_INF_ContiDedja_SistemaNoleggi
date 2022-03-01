@@ -134,6 +134,7 @@
     <Compile Include="ClientiPage.xaml.cs">
       <DependentUpon>ClientiPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ErrorDialog.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

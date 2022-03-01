@@ -1,8 +1,6 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
 using Noleggio_Library;
-using System;
 
 namespace SistemaNoleggi_UWP
 {
@@ -15,11 +13,20 @@ namespace SistemaNoleggi_UWP
 
         private void OnBtnSalva_Click(object sender, RoutedEventArgs e)
         {
+            decimal costoVeicolo;
+            decimal tariffaGiornaliera;
+            int numeroPosti;
+
+            if(txtTarga.Text == "" || txtModello.Text == "" 
+                || !decimal.TryParse(txtCostoVeicolo.Text, out costoVeicolo) || !decimal.TryParse(txtTariffa.Text, out tariffaGiornaliera) 
+                || !int.TryParse(txtNumeroPosti.Text, out numeroPosti))
+            {
+                new ErrorDialog().Show();
+                return;
+            }
+
             string targa = txtTarga.Text;
             string modello = txtModello.Text;
-            decimal costoVeicolo = Convert.ToDecimal(txtCostoVeicolo.Text);
-            decimal tariffaGiornaliera = Convert.ToDecimal(txtTariffa.Text);
-            int numeroPosti = int.Parse(txtNumeroPosti.Text);
 
             SistemaNoleggi.Instance.AggiungiAutomobile(targa, modello, costoVeicolo, tariffaGiornaliera, numeroPosti);
             Frame.GoBack();

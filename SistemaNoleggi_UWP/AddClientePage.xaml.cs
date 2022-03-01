@@ -1,14 +1,11 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Noleggio_Library;
-using Windows.UI.Popups;
 
 namespace SistemaNoleggi_UWP
 {
     public sealed partial class AddClientePage : Page
     {
-        public Cliente Cliente { get; private set; }
-
         public AddClientePage()
         {
             this.InitializeComponent();
@@ -18,12 +15,11 @@ namespace SistemaNoleggi_UWP
         {
             if (txtbox_Nome.Text == "" || txtbox_Cognome.Text == "" || txtbox_Cf.Text == "")
             {
-                MessageDialog messageDialog = new MessageDialog("Ok");
+                new ErrorDialog().Show();
                 return;
             }
 
             SistemaNoleggi.Instance.AggiungiCliente(txtbox_Nome.Text, txtbox_Cognome.Text, txtbox_Cf.Text);
-
             Frame.GoBack();
         }
 
