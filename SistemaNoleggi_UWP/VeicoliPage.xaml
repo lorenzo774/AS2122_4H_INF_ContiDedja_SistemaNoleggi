@@ -11,77 +11,37 @@
 
     <Grid Padding="40">
         <StackPanel>
-
             <TextBlock Text="Automobili" FontSize="50"/>
-
-            <ListView x:Name="listViewAutomobili">
+            <ListView x:Name="listViewAutomobili" Margin="0,10,0,0" HorizontalAlignment="Left">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local:Automobile">
-                        <StackPanel Orientation="Vertical">
-                            <StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Numeroposti" Padding="3"></TextBlock>
-                                    <TextBlock Text="{x:Bind NumeroPosti}" Padding="3"></TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Targa" Padding="3"></TextBlock>
-                                    <TextBlock Text="{x:Bind Targa}" Padding="3"></TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Modello " Padding="3"></TextBlock>
-                                    <TextBlock Text="{x:Bind Modello}" Padding="3"></TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Costo Veicolo " Padding="3"></TextBlock>
-                                    <TextBlock Text="{x:Bind CostoVeicolo}" Padding="3"></TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Disponibilitá " Padding="3"></TextBlock>
-                                    <TextBlock Text="{x:Bind Disponibile}" Padding="3"></TextBlock>
-                                </StackPanel>
-                            </StackPanel>
-                            <Button Content="Rimuovi" Click="removeAutomobile_Click"></Button>
-                        </StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1100" />
+                                <ColumnDefinition Width="200" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock xml:space="preserve" Text="{x:Bind}" FontSize="15" />
+                            <Button Grid.Column="1" Content="Rimuovi" Click="removeAutomobile_Click" HorizontalAlignment="Stretch" />
+                        </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
 
             <TextBlock Text="Furgoni" FontSize="50" Margin="0,100,0,0" />
-
-            <ListView x:Name="listViewFurgoni">
+            <ListView x:Name="listViewFurgoni" Margin="0,10,0,0" HorizontalAlignment="Left">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local:Furgone">
-                        <StackPanel Orientation="Vertical">
-                            <StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Capacitá" Padding="3"></TextBlock>
-                                    <TextBlock Text="{x:Bind Capacita}" Padding="3"></TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Targa" Padding="3"></TextBlock>
-                                    <TextBlock Text="{x:Bind Targa}" Padding="3"></TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Modello " Padding="3"></TextBlock>
-                                    <TextBlock Text="{x:Bind Modello}" Padding="3"></TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Costo Veicolo " Padding="3"></TextBlock>
-                                    <TextBlock Text="{x:Bind CostoVeicolo}" Padding="3"></TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Disponibilitá " Padding="3"></TextBlock>
-                                    <TextBlock Text="{x:Bind Disponibile}" Padding="3"></TextBlock>
-                                </StackPanel>
-                            </StackPanel>
-                            <Button Content="Rimuovi" Click="removeFurgone_Click"></Button>
-                        </StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1100" />
+                                <ColumnDefinition Width="200" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock xml:space="preserve" Text="{x:Bind}" FontSize="15" />
+                            <Button Grid.Column="1" Content="Rimuovi" Click="removeFurgone_Click" HorizontalAlignment="Stretch" />
+                        </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        
-            
         </StackPanel>
     </Grid>
 </Page>

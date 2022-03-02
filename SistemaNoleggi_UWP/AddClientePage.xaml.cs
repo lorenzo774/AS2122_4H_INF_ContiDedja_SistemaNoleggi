@@ -18,7 +18,6 @@ namespace SistemaNoleggi_UWP
                 new ErrorDialog().Show();
                 return;
             }
-
             SistemaNoleggi.Instance.AggiungiCliente(txtbox_Nome.Text, txtbox_Cognome.Text, txtbox_Cf.Text);
             Frame.GoBack();
         }
