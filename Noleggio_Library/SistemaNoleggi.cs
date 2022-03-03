@@ -82,5 +82,10 @@ namespace Noleggio_Library
         {
             Veicoli.Remove(veicolo);
         }
+
+        public void RimuoviNoleggio(Noleggio noleggio)
+        {
+            Noleggi.Remove(noleggio);
+        }
     }
 }

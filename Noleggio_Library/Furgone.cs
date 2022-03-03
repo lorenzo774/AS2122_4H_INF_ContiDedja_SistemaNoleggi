@@ -9,5 +9,10 @@
         {
             Capacita = capacita;
         }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()}\t\tCapacità: {Capacita}kg";
+        }
     }
 }

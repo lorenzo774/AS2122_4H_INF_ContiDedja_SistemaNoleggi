@@ -15,7 +15,7 @@
 
         public override string ToString()
         {
-            return $"{Cognome} {Nome}";
+            return $"Cognome: {Cognome}\t\tNome: {Nome}\t\tCF: {CF}";
         }
     }
 }

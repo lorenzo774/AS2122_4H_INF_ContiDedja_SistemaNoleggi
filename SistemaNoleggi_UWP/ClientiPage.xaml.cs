@@ -1,6 +1,6 @@
 ﻿using Windows.UI.Xaml.Controls;
 using Noleggio_Library;
-
+using System.Collections.ObjectModel;
 
 namespace SistemaNoleggi_UWP
 {
@@ -12,7 +12,14 @@ namespace SistemaNoleggi_UWP
         public ClientiPage()
         {
             this.InitializeComponent();
-            grdView.ItemsSource = SistemaNoleggi.Instance.Clienti;
+            listViewClienti.ItemsSource = new ObservableCollection<Cliente>(SistemaNoleggi.Instance.Clienti);
+        }
+
+        private void removeCliente_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var cliente = (sender as Button).DataContext as Cliente;
+            SistemaNoleggi.Instance.RimuoviCliente(cliente);
+            listViewClienti.ItemsSource = new ObservableCollection<Cliente>(SistemaNoleggi.Instance.Clienti);
         }
     }
 }

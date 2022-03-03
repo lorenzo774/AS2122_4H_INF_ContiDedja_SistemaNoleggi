@@ -21,7 +21,7 @@ namespace Noleggio_Library
 
         public override string ToString()
         {
-            return $"{Targa} {Modello}";
+            return $"Targa: {Targa}\t\tModello: {Modello}\t\tCosto: {CostoVeicolo}\t\tTariffa: {TariffaGiornaliera}\t\tDisponibile: {(Disponibile ? "✔️" : "❌")}";
         }
     }
 }

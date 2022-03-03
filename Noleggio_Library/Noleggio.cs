@@ -32,7 +32,7 @@ namespace Noleggio_Library
 
         public override string ToString()
         {
-            return $"{Id} {Cliente} {Veicolo}";
+            return $"id: {Id}\t\tInizio: {DataInizio}\t\tDurata: {DurataNoleggio}\t\tCliente: {Cliente.Nome}\t\tVeicolo: {Veicolo.Targa}";
         }
 
     }

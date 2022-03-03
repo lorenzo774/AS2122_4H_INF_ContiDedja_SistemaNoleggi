@@ -12,13 +12,11 @@
         <TextBlock Text="Aggiungi Noleggio" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="40" Margin="0,54,0,0"></TextBlock>
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <ComboBox Name="cmbClienti" Header="Clienti" HorizontalAlignment="Stretch"></ComboBox>
-            <ComboBox Name="cmbVeicoli" Header="Veicoli" HorizontalAlignment="Stretch"></ComboBox>
+            <ComboBox Name="cmbClienti" Header="Clienti" Width="296" />
+            <ComboBox Name="cmbVeicoli" Header="Veicoli" Width="295"  />
             <TextBox Name="txtboxDurata" Header="Durata Noleggio" PlaceholderText="Inserisci Durata Noleggio"/>
-            <DatePicker Name="datepickerData" Header="Data d'inizio"></DatePicker>
+            <DatePicker Name="datepickerData" Header="Data d'inizio"  />
         </StackPanel>
-
-
         <StackPanel Spacing="50" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,530,0,0">
             <Button Content="Salva" x:Name="btnSalva" Click="OnbtnSalva_Click" Width="150" Height="40"/>
             <Button Content="Annulla" x:Name="btnAnnulla" Click="OnbtnAnnulla_Click" Width="150" Height="40"/>

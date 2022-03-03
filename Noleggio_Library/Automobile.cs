@@ -9,5 +9,10 @@
         {
             NumeroPosti = numeroPosti;
         }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()}\t\tPosti: {NumeroPosti}";
+        }
     }
 }
