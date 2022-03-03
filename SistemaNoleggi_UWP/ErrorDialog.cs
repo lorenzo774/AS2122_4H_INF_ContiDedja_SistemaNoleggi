@@ -7,12 +7,12 @@ namespace SistemaNoleggi_UWP
     {
         private ContentDialog messageDialog;
 
-        public ErrorDialog()
+        public ErrorDialog(string errorMsg = "Dati non validi, riprova")
         {
             messageDialog = new ContentDialog()
             {
                 Title = "Errore",
-                Content = "Inserisci dati validi",
+                Content = errorMsg,
                 CloseButtonText = "OK",
                 Width = 100
             };

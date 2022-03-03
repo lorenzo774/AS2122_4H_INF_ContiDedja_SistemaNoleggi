@@ -1,16 +1,12 @@
-﻿using System;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using System.IO;
+using System;
+using System.Collections.Generic;
 using Noleggio_Library;
-using Windows.UI.Xaml.Navigation;
-
-// Il modello di elemento Pagina vuota è documentato all'indirizzo https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x410
 
 namespace SistemaNoleggi_UWP
 {
-    /// <summary>
-    /// Prima pagina
-    /// </summary>
     public sealed partial class MainPage : Page
     {
         public MainPage()
@@ -39,7 +35,22 @@ namespace SistemaNoleggi_UWP
         {
             Frame.Navigate(typeof(AddNoleggioPage));
         }
+        
+        private void OnCsvFileSalva_Click(object sender, RoutedEventArgs e)
+        {
+            ResourceManager converter = new ResourceManager();
+            converter.Save(SistemaNoleggi.Instance.Clienti, @"C:\Users\simon\Desktop\AS2122_4H_INF_ContiDedja_SistemaNoleggi\SistemaNoleggi_UWP\Csv_Files\Clienti.csv");
+        }
 
+        private void OnCsvFileAggiorna_Click(object sender, RoutedEventArgs e)
+        {
+            ResourceManager.Instance.Refresh(SistemaNoleggi.Instance.Clienti);
+        }
+
+        private void OnCsvFileCarica_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(PercorsiPage));
+        }
         #endregion
 
         private void NavigationView_Loaded(object sender, RoutedEventArgs e)
@@ -72,6 +83,5 @@ namespace SistemaNoleggi_UWP
                 }
             }
         }
-
     }
 }

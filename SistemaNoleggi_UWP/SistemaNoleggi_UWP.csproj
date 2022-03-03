@@ -134,6 +134,10 @@
     <Compile Include="ClientiPage.xaml.cs">
       <DependentUpon>ClientiPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PercorsiPage.xaml.cs">
+      <DependentUpon>PercorsiPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceManager.cs" />
     <Compile Include="ErrorDialog.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -194,6 +198,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PercorsiPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="VeicoliPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -212,6 +220,9 @@
       <Project>{5ae7e78c-b6a9-4706-a9f4-f8d077bc81b0}</Project>
       <Name>Noleggio_Library</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Csv_Files\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

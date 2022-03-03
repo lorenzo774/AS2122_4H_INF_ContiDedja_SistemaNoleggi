@@ -1,0 +1,29 @@
+﻿<Page
+    x:Class="SistemaNoleggi_UWP.PercorsiPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SistemaNoleggi_UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Padding="20" Orientation="Horizontal">
+                <Button Content="Carica" Click="OnPercorsoClienti_Click" VerticalAlignment="Center"></Button>
+                <TextBlock x:Name="txtboxClienti" VerticalAlignment="Center"></TextBlock>
+            </StackPanel>
+
+            <StackPanel Padding="20" Orientation="Horizontal">
+                <Button Content="Carica" Click="OnPercorsoVeicoli_Click" VerticalAlignment="Center"></Button>
+                <TextBlock x:Name="txtboxVeicoli" VerticalAlignment="Center"></TextBlock>
+            </StackPanel>
+
+            <StackPanel Padding="20" Orientation="Horizontal">
+                <Button Content="Carica" Click="OnPercorsoNoleggi_Click" VerticalAlignment="Center"></Button>
+                <TextBlock x:Name="txtboxNoleggi" VerticalAlignment="Center"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
