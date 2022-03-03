@@ -13,7 +13,6 @@ namespace SistemaNoleggi_UWP
     public class ResourceManager
     {
         static ResourceManager instance;
-
         /// <summary>
         /// Singleton dell'oggetto ResourceManager
         /// </summary>
@@ -29,128 +28,96 @@ namespace SistemaNoleggi_UWP
             }
         }
 
-        public string PathClienti { get; private set; }
-        public string PathVeicoli { get; private set; }
-        public string PathNoleggi { get; private set; }
+        /// <summary>
+        /// Rappresenta i percorsi per i tre oggetti Cliente [0], Veicolo [1], e Noleggio [2].
+        /// </summary>
+        public string[] Paths { get; set; }
 
-        public ResourceManager() { }
-
-        public void Save(List<Cliente> lista, string path)
+        public ResourceManager()
         {
-            if (File.Exists(path))
-            {
-                StreamWriter streamWriter = new StreamWriter(path);
-                for (int i = 0; i < lista.Count; i++)
-                {
-                }
-                streamWriter.Close();
-            }
+            Paths = new string[3];
         }
 
-        public void Save(List<Veicolo> lista, string path)
+        /// <summary>
+        /// Metodo che permette di convertire i dati in formato csv per poi salvarli sul file indicato dal percorso
+        /// </summary>
+        /// <param name="lista"></param>
+        /// <param name="path"></param>
+        public void Save(List<ICsvSerializable> lista, PathType pathType)
         {
-            if (File.Exists(path))
+            ErrorDialog errorDialog1 = new ErrorDialog();
+            string path = Paths[(int)pathType];
+            
+            if (!File.Exists(path))
             {
-                StreamWriter streamWriter = new StreamWriter(path);
-                for (int i = 0; i < lista.Count; i++)
-                {
-                }
-                streamWriter.Close();
+                ErrorDialog errorDialog = new ErrorDialog("Percorso non trovato");
+                return;
             }
+
+            StreamWriter stream = new StreamWriter(path);
+
+            foreach (var item in lista)
+            {
+                stream.WriteLine(item.CsvFormat());
+            }
+
+            stream.Close();
         }
 
-        public void Save(List<Noleggio> lista)
+        /// <summary>
+        /// Metodo che permette di ricavare una lista di oggetti da un file csv dato il suo percorso
+        /// </summary>
+        public async Task<List<ICsvSerializable>> Load()
         {
-            if (File.Exists(PathNoleggi))
+            var picker = new FileOpenPicker();
+            picker.ViewMode = PickerViewMode.Thumbnail;
+            picker.FileTypeFilter.Add(".csv");
+
+            StorageFile file = await picker.PickSingleFileAsync();
+
+            List<ICsvSerializable> serializableObjects = new List<ICsvSerializable>();
+            StreamReader stream = File.OpenText(file.Path);
+            string s;
+            while ((s = stream.ReadLine()) != null)
             {
-                StreamWriter streamWriter = new StreamWriter(PathNoleggi);
-                for (int i = 0; i < lista.Count; i++)
-                {
-                }
-                streamWriter.Close();
+                serializableObjects.Add(serializableObjects[0]);
             }
+
+            return serializableObjects;
         }
 
-        public List<Cliente> Refresh(List<Cliente> lista)
+
+        public void Refresh(PathType pathType)
         {
-            if (!File.Exists(PathClienti))
+            string path = Paths[(int)pathType];
+
+            if (!File.Exists(path))
             {
                 ErrorDialog errorDialog = new ErrorDialog("File non trovato nel percorso.");
+                return;
             }
 
-            StreamReader streamReader = new StreamReader(PathClienti);
+
+            StreamReader streamReader = new StreamReader(path);
 
             while (!streamReader.EndOfStream)
             {
                 var data = streamReader.ReadLine().Split(',');
 
-                lista.Add(new Cliente(data[0], data[1], data[2]));
-            }
-
-            streamReader.Close();
-
-            return lista;
-        }
-
-        public void Refresh(List<Veicolo> lista)
-        {
-            StreamReader streamReader = new StreamReader(PathVeicoli);
-
-            while (!streamReader.EndOfStream)
-            {
-                var data = streamReader.ReadLine().Split(',');
-
-                lista.Add(new Veicolo(data[0], data[1], decimal.Parse(data[2]), decimal.Parse(data[3])));
+                //lista.Add(new Cliente(data[0], data[1], data[2]));
             }
 
             streamReader.Close();
         }
+    }
 
-        public void Refresh(List<Noleggio> lista)
-        {
-            StreamReader streamReader = new StreamReader(PathNoleggi);
-
-            while (!streamReader.EndOfStream)
-            {
-                var data = streamReader.ReadLine().Split(',');
-
-                Cliente cliente = SistemaNoleggi.Instance.CercaCliente(data[2]);
-                Veicolo veicolo = SistemaNoleggi.Instance.CercaVeicolo(data[3]);
-
-                lista.Add(new Noleggio(DateTime.Parse(data[0]), int.Parse(data[1]), cliente, veicolo));
-            }
-
-            streamReader.Close();
-        }
-
-        public async void LoadClienti()
-        {
-            var picker = new FileOpenPicker();
-            picker.ViewMode = PickerViewMode.Thumbnail;
-            picker.FileTypeFilter.Add(".csv");
-
-            StorageFile file = await picker.PickSingleFileAsync();
-            PathClienti = file.Path;
-        }
-        
-        public async void LoadVeicoli()
-        {
-            var picker = new FileOpenPicker();
-            picker.ViewMode = PickerViewMode.Thumbnail;
-            picker.FileTypeFilter.Add(".csv");
-
-            StorageFile file = await picker.PickSingleFileAsync();
-            PathVeicoli = file.Path;
-        }
-
-        public async void LoadNoleggi()
-        {
-            var picker = new FileOpenPicker();
-            picker.ViewMode = PickerViewMode.Thumbnail;
-            picker.FileTypeFilter.Add(".csv");
-
-            StorageFile file = await picker.PickSingleFileAsync();
-            PathNoleggi = file.Path;
-        }
+    /// <summary>
+    /// Enumeratore utilizzabile per specificare se il percorso desiderato é quello per i Clienti, Veicoli o Noleggi
+    /// </summary>
+    public enum PathType
+    {
+        Cliente,
+        Veicolo,
+        Noleggio
     }
 }

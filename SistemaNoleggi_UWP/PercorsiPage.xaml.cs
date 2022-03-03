@@ -14,26 +14,21 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Noleggio_Library;
 
-// Il modello di elemento Pagina vuota è documentato all'indirizzo https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace SistemaNoleggi_UWP
 {
-    /// <summary>
-    /// Pagina vuota che può essere usata autonomamente oppure per l'esplorazione all'interno di un frame.
-    /// </summary>
     public sealed partial class PercorsiPage : Page
     {
         public PercorsiPage()
         {
             this.InitializeComponent();
-            txtboxClienti.Text = "Percorso: " + ResourceManager.Instance.PathClienti;
-            txtboxVeicoli.Text = "Percorso: " + ResourceManager.Instance.PathVeicoli;
-            txtboxNoleggi.Text = "Percorso: " + ResourceManager.Instance.PathNoleggi;
+            txtboxClienti.Text = "Percorso: " + ResourceManager.Instance.Paths[(int)PathType.Cliente];
+            txtboxVeicoli.Text = "Percorso: " + ResourceManager.Instance.Paths[(int)PathType.Veicolo];
+            txtboxNoleggi.Text = "Percorso: " + ResourceManager.Instance.Paths[(int)PathType.Noleggio];
         }
 
         private void OnPercorsoClienti_Click(object sender, RoutedEventArgs e)
         {
-            ResourceManager.Instance.LoadClienti();
+            ResourceManager.Instance.Load();
         }
 
         private void OnPercorsoVeicoli_Click(object sender, RoutedEventArgs e)

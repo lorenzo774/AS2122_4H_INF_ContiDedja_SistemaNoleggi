@@ -2,7 +2,7 @@
 
 namespace Noleggio_Library
 {
-    public class Noleggio
+    public class Noleggio : ICsvSerializable
     {
         static private int id = 0;
 
@@ -35,5 +35,15 @@ namespace Noleggio_Library
             return $"id: {Id}\t\tInizio: {DataInizio}\t\tDurata: {DurataNoleggio}\t\tCliente: {Cliente.Nome}\t\tVeicolo: {Veicolo.Targa}";
         }
 
+        public string CsvFormat()
+        {
+            return $"{Id},{Veicolo.Targa},{Cliente.CF},{DataInizio.ToString()},{DurataNoleggio.ToString()},{CalcolaCosto().ToString()}";
+        }
+
+        public ICsvSerializable ObjectFormat(string str)
+        {
+            string[] data = str.Split(',');
+            return new Cliente(data[1], data[2], data[0]);
+        }
     }
 }

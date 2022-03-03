@@ -36,15 +36,16 @@ namespace SistemaNoleggi_UWP
             Frame.Navigate(typeof(AddNoleggioPage));
         }
         
+
+
         private void OnCsvFileSalva_Click(object sender, RoutedEventArgs e)
         {
-            ResourceManager converter = new ResourceManager();
-            converter.Save(SistemaNoleggi.Instance.Clienti, @"C:\Users\simon\Desktop\AS2122_4H_INF_ContiDedja_SistemaNoleggi\SistemaNoleggi_UWP\Csv_Files\Clienti.csv");
+            ResourceManager.Instance.Refresh(PathType.Cliente);
         }
 
         private void OnCsvFileAggiorna_Click(object sender, RoutedEventArgs e)
         {
-            ResourceManager.Instance.Refresh(SistemaNoleggi.Instance.Clienti);
+            ResourceManager.Instance.Refresh(PathType.Cliente);
         }
 
         private void OnCsvFileCarica_Click(object sender, RoutedEventArgs e)
