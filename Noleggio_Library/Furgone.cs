@@ -1,5 +1,8 @@
 ﻿namespace Noleggio_Library
 {
+    /// <summary>
+    /// Furgone, derivato da veicolo
+    /// </summary>
     public class Furgone : Veicolo, ICsvSerializable
     {
         public double Capacita { get; private set; }

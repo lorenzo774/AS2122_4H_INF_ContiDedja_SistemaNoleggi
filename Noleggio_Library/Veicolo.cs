@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System;
-
-namespace Noleggio_Library
+﻿namespace Noleggio_Library
 {
+    /// <summary>
+    /// Un veicolo generico
+    /// </summary>
     public class Veicolo
     {
         public string Targa { get; }

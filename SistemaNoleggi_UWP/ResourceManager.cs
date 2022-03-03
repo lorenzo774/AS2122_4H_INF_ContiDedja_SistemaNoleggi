@@ -41,8 +41,6 @@ namespace SistemaNoleggi_UWP
         /// <summary>
         /// Metodo che permette di convertire i dati in formato csv per poi salvarli sul file indicato dal percorso
         /// </summary>
-        /// <param name="lista"></param>
-        /// <param name="path"></param>
         public void Save(List<ICsvSerializable> lista, PathType pathType)
         {
             ErrorDialog errorDialog1 = new ErrorDialog();
@@ -51,6 +49,7 @@ namespace SistemaNoleggi_UWP
             if (!File.Exists(path))
             {
                 ErrorDialog errorDialog = new ErrorDialog("Percorso non trovato");
+                errorDialog.Show();
                 return;
             }
 

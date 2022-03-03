@@ -1,5 +1,8 @@
 ﻿namespace Noleggio_Library
 {
+    /// <summary>
+    /// Automobile, derivato da veicolo
+    /// </summary>
     public class Automobile : Veicolo, ICsvSerializable
     {
         public int NumeroPosti { get; private set; }

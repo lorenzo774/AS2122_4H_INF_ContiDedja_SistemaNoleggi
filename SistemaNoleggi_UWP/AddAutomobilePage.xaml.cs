@@ -4,6 +4,9 @@ using Noleggio_Library;
 
 namespace SistemaNoleggi_UWP
 {
+    /// <summary>
+    /// Pagina per aggiungere una nuova automobile
+    /// </summary>
     public sealed partial class AddAutomobilePage : Page
     {
         public AddAutomobilePage()
@@ -13,10 +16,12 @@ namespace SistemaNoleggi_UWP
 
         private void OnBtnSalva_Click(object sender, RoutedEventArgs e)
         {
+            // Valori numerici da assegnare successivamente
             decimal costoVeicolo;
             decimal tariffaGiornaliera;
             int numeroPosti;
 
+            // Verifica input dell'utente
             if(txtTarga.Text == "" || txtModello.Text == "" 
                 || !decimal.TryParse(txtCostoVeicolo.Text, out costoVeicolo) || !decimal.TryParse(txtTariffa.Text, out tariffaGiornaliera) 
                 || !int.TryParse(txtNumeroPosti.Text, out numeroPosti))
@@ -28,6 +33,7 @@ namespace SistemaNoleggi_UWP
             string targa = txtTarga.Text;
             string modello = txtModello.Text;
 
+            // Aggiunta di un automobile e ritorno alla Page precedente
             SistemaNoleggi.Instance.AggiungiAutomobile(targa, modello, costoVeicolo, tariffaGiornaliera, numeroPosti);
             Frame.GoBack();
         }

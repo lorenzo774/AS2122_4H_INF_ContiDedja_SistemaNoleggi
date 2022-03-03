@@ -4,6 +4,9 @@ using Noleggio_Library;
 
 namespace SistemaNoleggi_UWP
 {
+    /// <summary>
+    /// Pagina per aggiungere un nuovo cliente
+    /// </summary>
     public sealed partial class AddClientePage : Page
     {
         public AddClientePage()
@@ -13,11 +16,14 @@ namespace SistemaNoleggi_UWP
 
         private void OnbtnSalva_Click(object sender, RoutedEventArgs e)
         {
+            // Verifica input dell'utente
             if (txtbox_Nome.Text == "" || txtbox_Cognome.Text == "" || txtbox_Cf.Text == "")
             {
                 new ErrorDialog().Show();
                 return;
             }
+
+            // Aggiunta di un cliente e ritorno alla Page precedente
             SistemaNoleggi.Instance.AggiungiCliente(txtbox_Nome.Text, txtbox_Cognome.Text, txtbox_Cf.Text);
             Frame.GoBack();
         }

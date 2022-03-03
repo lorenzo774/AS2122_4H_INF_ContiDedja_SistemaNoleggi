@@ -3,12 +3,12 @@
   <Class Name="Noleggio_Library.Automobile">
     <Position X="0.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
       <FileName>Automobile.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Noleggio_Library.Cliente">
-    <Position X="4.75" Y="5.25" Width="1.5" />
+    <Position X="12" Y="5.25" Width="1.5" />
     <Members>
       <Method Name="ToString" Hidden="true" />
     </Members>
@@ -20,12 +20,12 @@
   <Class Name="Noleggio_Library.Furgone">
     <Position X="2.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
       <FileName>Furgone.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Noleggio_Library.Noleggio">
-    <Position X="8.5" Y="5" Width="1.5" />
+    <Position X="9.5" Y="5" Width="1.5" />
     <Members>
       <Field Name="id" Hidden="true" />
       <Method Name="ToString" Hidden="true" />
@@ -34,6 +34,10 @@
       <HashCode>AAACAAAAAAAAAAAEAQSAAAAAAAAAgAAAAAAAIIAAAgA=</HashCode>
       <FileName>Noleggio.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Cliente" />
+      <Property Name="Veicolo" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Noleggio_Library.SistemaNoleggi">
     <Position X="6.25" Y="0.5" Width="1.5" />
@@ -42,13 +46,15 @@
       <Property Name="Instance" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAQCAAAQAAEACIAQAAAABAAAAAQAAABAAgAAA=</HashCode>
+      <HashCode>AAAAAAAAQDAAAQAAEACIAQAAAABADAAIQAAABQAgAAA=</HashCode>
       <FileName>SistemaNoleggi.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
+      <Property Name="Veicoli" />
       <Property Name="Noleggi" />
       <Property Name="Clienti" />
-      <Property Name="Veicoli" />
+      <Property Name="Automobili" />
+      <Property Name="Furgoni" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Noleggio_Library.Veicolo">

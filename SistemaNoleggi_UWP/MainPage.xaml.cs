@@ -1,12 +1,13 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using System.IO;
-using System;
-using System.Collections.Generic;
 using Noleggio_Library;
 
 namespace SistemaNoleggi_UWP
 {
+    /// <summary>
+    /// Pagina principale del programma
+    /// </summary>
     public sealed partial class MainPage : Page
     {
         public MainPage()
@@ -54,11 +55,13 @@ namespace SistemaNoleggi_UWP
         }
         #endregion
 
+        // Nel momento in cui la view della NavigationBar viene caricata naviga nella pagina della lista Noleggi
         private void NavigationView_Loaded(object sender, RoutedEventArgs e)
         {
             ContentFrame.Navigate(typeof(NoleggiPage));
         }
 
+        // Chiamato quando viene cliccato un elemento della NavigationView
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             if (args.IsSettingsSelected)
@@ -67,6 +70,7 @@ namespace SistemaNoleggi_UWP
             }
             else
             {
+                // Naviga in una page in base all'elemento selezionato (cliccato) nella NavigationView
                 NavigationViewItem item = args.SelectedItem as NavigationViewItem;
                 switch (item.Tag.ToString())
                 {
