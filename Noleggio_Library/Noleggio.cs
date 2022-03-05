@@ -22,6 +22,17 @@ namespace Noleggio_Library
             Id = id++;
         }
 
+        public Noleggio(string csvFormat)
+        {
+            string[] data = csvFormat.Split(',');
+
+            Id = int.Parse(data[0]);
+            Veicolo = SistemaNoleggi.Instance.CercaVeicolo(data[1]);
+            Cliente = SistemaNoleggi.Instance.CercaCliente(data[2]);
+            DataInizio = DateTime.Parse(data[3]);
+            DurataNoleggio = int.Parse(data[4]);
+        }
+
 
         public decimal CalcolaRicavo()
         {
@@ -38,12 +49,6 @@ namespace Noleggio_Library
         public string CsvFormat()
         {
             return $"{Id},{Veicolo.Targa},{Cliente.CF},{DataInizio.ToString()},{DurataNoleggio.ToString()},{CalcolaCosto().ToString()}";
-        }
-
-        public ICsvSerializable ObjectFormat(string str)
-        {
-            string[] data = str.Split(',');
-            return new Cliente(data[1], data[2], data[0]);
         }
     }
 }

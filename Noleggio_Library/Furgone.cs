@@ -13,6 +13,16 @@
             Capacita = capacita;
         }
 
+        public Furgone(string csvFormat) : base(csvFormat)
+        {
+            string[] data = csvFormat.Split(',');
+
+            targa = data[0];
+            modello = data[1];
+            TariffaGiornaliera = decimal.Parse(data[2]);
+            Capacita = double.Parse(data[3]);
+        }
+
         public override string ToString()
         {
             return $"{base.ToString()}\t\tCapacità: {Capacita}kg";
@@ -20,13 +30,7 @@
 
         public string CsvFormat()
         {
-            return $"{Targa},{Modello},{TariffaGiornaliera},{Capacita}";
-        }
-
-        public ICsvSerializable ObjectFormat(string str)
-        {
-            string[] data = str.Split(',');
-            return new Cliente(data[1], data[2], data[0]);
+            return $"{Targa},{Modello},{TariffaGiornaliera.ToString()},{Capacita.ToString()}";
         }
     }
 }

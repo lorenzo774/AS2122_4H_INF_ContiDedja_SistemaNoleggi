@@ -13,6 +13,16 @@
             NumeroPosti = numeroPosti;
         }
 
+        public Automobile(string csvFormat) : base(csvFormat)
+        {
+            string[] data = csvFormat.Split(',');
+
+            targa = data[0];
+            modello = data[1];
+            TariffaGiornaliera = decimal.Parse(data[2]);
+            NumeroPosti = int.Parse(data[3]);
+        }
+
         public override string ToString()
         {
             return $"{base.ToString()}\t\tPosti: {NumeroPosti}";
@@ -20,13 +30,7 @@
 
         public string CsvFormat()
         {
-            return $"{Targa},{Modello},{TariffaGiornaliera},{NumeroPosti}";
-        }
-
-        public ICsvSerializable ObjectFormat(string str)
-        {
-            string[] data = str.Split(',');
-            return new Cliente(data[1], data[2], data[0]);
+            return $"{Targa},{Modello},{TariffaGiornaliera.ToString()},{NumeroPosti.ToString()}";
         }
     }
 }
