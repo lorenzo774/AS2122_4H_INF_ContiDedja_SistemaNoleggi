@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage.Pickers;
 using Windows.Storage;
@@ -10,113 +8,156 @@ using System.IO;
 
 namespace SistemaNoleggi_UWP
 {
+    /// <summary>
+    /// Oggetto che permette di sovrascrivere su file csv e caricare dati dai medesimi
+    /// </summary>
     public class ResourceManager
     {
+        public string[] Paths { get; set; }
         static ResourceManager instance;
-        /// <summary>
-        /// Singleton dell'oggetto ResourceManager
-        /// </summary>
+
+
         public static ResourceManager Instance
         {
             get
             {
                 if (instance == null)
-                {
                     instance = new ResourceManager();
-                }
+
                 return instance;
             }
         }
 
-        /// <summary>
-        /// Rappresenta i percorsi per i tre oggetti Cliente [0], Veicolo [1], e Noleggio [2].
-        /// </summary>
-        public string[] Paths { get; set; }
 
         public ResourceManager()
         {
             Paths = new string[3];
         }
 
-        /// <summary>
-        /// Metodo che permette di convertire i dati in formato csv per poi salvarli sul file indicato dal percorso
-        /// </summary>
-        public void Save(List<ICsvSerializable> lista, PathType pathType)
+
+        public void Save(List<Cliente> list)
         {
-            ErrorDialog errorDialog1 = new ErrorDialog();
-            string path = Paths[(int)pathType];
-            
-            if (!File.Exists(path))
-            {
-                ErrorDialog errorDialog = new ErrorDialog("Percorso non trovato");
-                errorDialog.Show();
-                return;
-            }
+            string path = Paths[(int)PathType.Cliente];
+            if (!File.Exists(path)) return;
 
             StreamWriter stream = new StreamWriter(path);
 
-            foreach (var item in lista)
-            {
-                stream.WriteLine(item.CsvFormat());
-            }
+            foreach (Cliente obj in list)
+                stream.WriteLine(obj.CsvFormat());
+
+            stream.Close();
+        }
+        public void Save(List<Veicolo> list)
+        {
+            string path = Paths[(int)PathType.Veicolo];
+            if (!File.Exists(path)) return;
+
+            StreamWriter stream = new StreamWriter(path);
+
+            foreach (Veicolo obj in list)
+                stream.WriteLine(obj.CsvFormat());
+
+            stream.Close();
+        }
+        public void Save(List<Noleggio> list)
+        {
+            string path = Paths[(int)PathType.Noleggio];
+            if (!File.Exists(path)) return;
+
+            StreamWriter stream = new StreamWriter(path);
+
+            foreach (Noleggio obj in list)
+                stream.WriteLine(obj.CsvFormat());
 
             stream.Close();
         }
 
-        /// <summary>
-        /// Metodo che permette di ricavare una lista di oggetti da un file csv dato il suo percorso
-        /// </summary>
-        public async Task<List<ICsvSerializable>> Load()
+
+        public List<Cliente> RefreshCliente()
         {
-            var picker = new FileOpenPicker();
-            picker.ViewMode = PickerViewMode.Thumbnail;
+            string path = Paths[(int)PathType.Cliente];
+            if (!File.Exists(path))
+            {
+                ErrorDialog errorDialog = new ErrorDialog("File non trovato, importarne uno nuovo");
+                return null;
+            }
+
+            List<Cliente> list = new List<Cliente>();
+            StreamReader stream = new StreamReader(path);
+
+            string s;
+            while ((s = stream.ReadLine()) != null)
+                list.Add(new Cliente(s));
+
+            stream.Close();
+            return list;
+        }
+        public List<Veicolo> RefreshVeicolo()
+        {
+            string path = Paths[(int)PathType.Veicolo];
+            if (!File.Exists(path))
+            {
+                ErrorDialog errorDialog = new ErrorDialog("File non trovato, importarne uno nuovo");
+                return null;
+            }
+
+            List<Veicolo> list = new List<Veicolo>();
+            StreamReader stream = new StreamReader(path);
+
+            string s;
+            while ((s = stream.ReadLine()) != null)
+                list.Add(new Veicolo(s));
+
+            stream.Close(); 
+            return list;
+        }
+        public List<Noleggio> RefreshNoleggio()
+        {
+            string path = Paths[(int)PathType.Noleggio];
+            if (!File.Exists(path))
+            {
+                ErrorDialog errorDialog = new ErrorDialog("File non trovato, importarne uno nuovo");
+                return null;
+            }
+
+            List<Noleggio> list = new List<Noleggio>();
+            StreamReader stream = new StreamReader(path);
+
+            string s;
+            while ((s = stream.ReadLine()) != null)
+                list.Add(new Noleggio(s));
+
+            stream.Close();
+            return list;
+        }
+
+
+        public async void Load(PathType pathType)
+        {
+            var picker = new FileOpenPicker() { ViewMode = PickerViewMode.Thumbnail };
             picker.FileTypeFilter.Add(".csv");
 
             StorageFile file = await picker.PickSingleFileAsync();
-
-            List<ICsvSerializable> serializableObjects = new List<ICsvSerializable>();
-            StreamReader stream = File.OpenText(file.Path);
-            string s;
-            while ((s = stream.ReadLine()) != null)
-            {
-                serializableObjects.Add(serializableObjects[0]);
-            }
-
-            return serializableObjects;
+            Paths[(int)pathType] = file.Path;
         }
 
 
-        public void Refresh(PathType pathType)
+        bool checkType<T>(List<T> list)
         {
-            string path = Paths[(int)pathType];
+            if (list.Count > 0)
+                if (list[0] is CsvSerializableObject)
+                    return true;
 
-            if (!File.Exists(path))
-            {
-                ErrorDialog errorDialog = new ErrorDialog("File non trovato nel percorso.");
-                return;
-            }
-
-
-            StreamReader streamReader = new StreamReader(path);
-
-            while (!streamReader.EndOfStream)
-            {
-                var data = streamReader.ReadLine().Split(',');
-
-                //lista.Add(new Cliente(data[0], data[1], data[2]));
-            }
-
-            streamReader.Close();
+            return false;
         }
     }
 
-    /// <summary>
-    /// Enumeratore utilizzabile per specificare se il percorso desiderato é quello per i Clienti, Veicoli o Noleggi
-    /// </summary>
     public enum PathType
     {
         Cliente,
         Veicolo,
         Noleggio
     }
+
+    public abstract class CsvSerializableObject { }
 }

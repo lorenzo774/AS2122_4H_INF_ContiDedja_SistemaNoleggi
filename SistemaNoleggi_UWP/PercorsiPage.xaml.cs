@@ -28,7 +28,6 @@ namespace SistemaNoleggi_UWP
 
         private void OnPercorsoClienti_Click(object sender, RoutedEventArgs e)
         {
-            ResourceManager.Instance.Load();
         }
 
         private void OnPercorsoVeicoli_Click(object sender, RoutedEventArgs e)
