@@ -14,5 +14,9 @@ La soluzione è stata suddivisa in 2 progetti:
 - Progetto Universal Windows Platform: diviso in 7 Page
   ![alt text](/doc/prodotto-finale.png?raw=true)
 
-Per ulteriori informazioni controllare la cartella doc
 
+## Diagramma delle attività
+Diagramma Gantt monday.com: https://view.monday.com/2381342175-fbc62286e8a42510bde0b441952b95e0?r=use1
+File excel: doc/gantt.xlsx
+
+Per ulteriori informazioni consultare la cartella doc
