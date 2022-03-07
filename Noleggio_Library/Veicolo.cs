@@ -3,7 +3,7 @@
     /// <summary>
     /// Un veicolo generico
     /// </summary>
-    public class Veicolo
+    public class Veicolo : ICsvSerializable
     {
         public int Id { get; set; }
         public string Targa { get; protected set; }
@@ -37,6 +37,11 @@
         public override string ToString()
         {
             return $"Targa: {Targa}\t\tModello: {Modello}\t\tCosto: {CostoVeicolo}\t\tTariffa: {TariffaGiornaliera}\t\tDisponibile: {(Disponibile ? "✔️" : "❌")}";
+        }
+
+        public string CsvFormat()
+        {
+            return $"{Targa},{Modello},{TariffaGiornaliera.ToString()}";
         }
     }
 }

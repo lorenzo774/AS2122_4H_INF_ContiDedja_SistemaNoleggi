@@ -42,7 +42,9 @@ namespace SistemaNoleggi_UWP
 
         private void OnCsvFileSalva_Click(object sender, RoutedEventArgs e)
         {
-            ResourceManager.Instance.Refresh(PathType.Cliente);
+            ResourceManager.Instance.RefreshCliente();
+            ResourceManager.Instance.RefreshVeicolo();
+            ResourceManager.Instance.RefreshNoleggio();
         }
 
         private void OnCsvFileAggiorna_Click(object sender, RoutedEventArgs e)
