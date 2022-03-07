@@ -2,9 +2,16 @@
 {
     public class Cliente : ICsvSerializable
     {
+        public int Id { get; set; }
+
         public string CF { get; private set; }
         public string Nome { get; set; }
         public string Cognome { get; set; }
+
+        public Cliente()
+        {
+
+        }
 
         public Cliente(string nome, string cognome, string CF)
         {

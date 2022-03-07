@@ -13,6 +13,7 @@ namespace SistemaNoleggi_UWP
         public MainPage()
         {
             this.InitializeComponent();
+
         }
 
         #region MenuBar buttons

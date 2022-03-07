@@ -17,8 +17,8 @@
         {
             string[] data = csvFormat.Split(',');
 
-            targa = data[0];
-            modello = data[1];
+            Targa = data[0];
+            Modello = data[1];
             TariffaGiornaliera = decimal.Parse(data[2]);
             Capacita = double.Parse(data[3]);
         }
@@ -30,7 +30,7 @@
 
         public string CsvFormat()
         {
-            return $"{Targa},{Modello},{TariffaGiornaliera.ToString()},{Capacita.ToString()}";
+            return $"{Targa},{Modello},{TariffaGiornaliera},{Capacita}";
         }
     }
 }

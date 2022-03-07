@@ -5,22 +5,31 @@
     /// </summary>
     public class Veicolo
     {
-        protected string targa, modello;
-        public string Targa { get { return targa; } }
-        public string Modello { get { return modello; } }
-        public decimal CostoVeicolo { get; }
-        public decimal TariffaGiornaliera { get; set; }
+        public int Id { get; set; }
+        public string Targa { get; protected set; }
+        public string Modello { get; protected set; }
         public bool Disponibile { get; private set; }
+
+        // In SQL decimal(9, 4)
+        public decimal CostoVeicolo { get; }
+
+        // In SQL decimal(9, 4)
+        public decimal TariffaGiornaliera { get; set; }
 
 
         public Veicolo(string csvFormat)
         {
         }
 
+        public Veicolo()
+        {
+
+        }
+
         public Veicolo(string targa, string modello, decimal costoVeicolo, decimal tariffaGiornaliera)
         {
-            this.targa = targa;
-            this.modello = modello;
+            Targa = targa;
+            Modello = modello;
             CostoVeicolo = costoVeicolo;
             TariffaGiornaliera = tariffaGiornaliera;
         }

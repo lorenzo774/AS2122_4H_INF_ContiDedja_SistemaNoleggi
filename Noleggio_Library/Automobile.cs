@@ -17,8 +17,8 @@
         {
             string[] data = csvFormat.Split(',');
 
-            targa = data[0];
-            modello = data[1];
+            Targa = data[0];
+            Modello = data[1];
             TariffaGiornaliera = decimal.Parse(data[2]);
             NumeroPosti = int.Parse(data[3]);
         }
