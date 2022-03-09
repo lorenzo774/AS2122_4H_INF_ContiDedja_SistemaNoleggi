@@ -1,7 +1,8 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using System.IO;
 using Noleggio_Library;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace SistemaNoleggi_UWP
 {
@@ -42,14 +43,26 @@ namespace SistemaNoleggi_UWP
 
         private void OnCsvFileSalva_Click(object sender, RoutedEventArgs e)
         {
-            ResourceManager.Instance.RefreshCliente();
-            ResourceManager.Instance.RefreshVeicolo();
-            ResourceManager.Instance.RefreshNoleggio();
+            SaveData();
         }
 
         private void OnCsvFileAggiorna_Click(object sender, RoutedEventArgs e)
         {
-            ResourceManager.Instance.Refresh(PathType.Cliente);
+            UnwrapData();
+        }
+
+        async void UnwrapData()
+        {
+            SistemaNoleggi.Instance.Clienti = await ResourceManager.Instance.RefreshCliente();
+            SistemaNoleggi.Instance.Veicoli = await ResourceManager.Instance.RefreshVeicolo();
+            SistemaNoleggi.Instance.Noleggi = await ResourceManager.Instance.RefreshNoleggio();
+        }
+
+        void SaveData()
+        {
+            ResourceManager.Instance.Save(SistemaNoleggi.Instance.Clienti);
+            ResourceManager.Instance.Save(SistemaNoleggi.Instance.Veicoli);
+            ResourceManager.Instance.Save(SistemaNoleggi.Instance.Noleggi);
         }
 
         private void OnCsvFileCarica_Click(object sender, RoutedEventArgs e)
@@ -91,5 +104,6 @@ namespace SistemaNoleggi_UWP
                 }
             }
         }
+
     }
 }

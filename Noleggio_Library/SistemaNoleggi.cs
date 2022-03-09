@@ -21,9 +21,9 @@ namespace Noleggio_Library
             }
         }
 
-        public List<Veicolo> Veicoli { get; private set; }
-        public List<Noleggio> Noleggi { get; private set; }
-        public List<Cliente> Clienti { get; private set; }
+        public List<Veicolo> Veicoli { get; set; }
+        public List<Noleggio> Noleggi { get; set; }
+        public List<Cliente> Clienti { get; set; }
 
         /// <summary>Restituisce la lista di automobili presenti nella lista di veicoli</summary>
         public List<Automobile> Automobili { 
