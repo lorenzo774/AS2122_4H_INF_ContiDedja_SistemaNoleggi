@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Windows.Storage.Streams;
 using Windows.Storage.Pickers;
-using Windows.Foundation.Collections;
 using Windows.Storage;
 using Noleggio_Library;
-using System.IO;
 
 namespace SistemaNoleggi_UWP
 {
@@ -46,41 +43,45 @@ namespace SistemaNoleggi_UWP
             }
 
             List<string> strList = new List<string>();
-
             foreach (Cliente cliente in list)
-            {
                 strList.Add(cliente.CsvFormat());
-            }
 
             IEnumerable<string> lines = strList;
-
             await FileIO.WriteLinesAsync(file, lines);
         }
         public async void Save(List<Veicolo> list)
         {
-            StorageFile file = files[(int)FileType.Veicolo];
+            var file = files[(int)FileType.Veicolo];
 
             if (file == null)
             {
-                Message("File veicoli inesistente");
+                Message($"File inesistente, path: {file.Path}");
                 return;
             }
 
-            foreach (Veicolo obj in list)
-                await FileIO.WriteTextAsync(file, obj.CsvFormat());
+            List<string> strList = new List<string>();
+            foreach (Veicolo veicolo in list)
+                strList.Add(veicolo.CsvFormat());
+
+            IEnumerable<string> lines = strList;
+            await FileIO.WriteLinesAsync(file, lines);
         }
         public async void Save(List<Noleggio> list)
         {
-            StorageFile file = files[(int)FileType.Noleggio];
+            var file = files[(int)FileType.Noleggio];
 
             if (file == null)
             {
-                Message("File noleggi inesistente");
+                Message($"File inesistente, path: {file.Path}");
                 return;
             }
 
-            foreach (Noleggio obj in list)
-                await FileIO.WriteTextAsync(file, obj.CsvFormat());
+            List<string> strList = new List<string>();
+            foreach (Noleggio noleggio in list)
+                strList.Add(noleggio.CsvFormat());
+
+            IEnumerable<string> lines = strList;
+            await FileIO.WriteLinesAsync(file, lines);
         }
 
 
