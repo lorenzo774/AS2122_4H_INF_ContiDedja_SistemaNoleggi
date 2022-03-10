@@ -9,21 +9,14 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <StackPanel Padding="20" Orientation="Horizontal">
-                <Button Content="Carica" Click="OnPercorsoClienti_Click" VerticalAlignment="Center"></Button>
-                <TextBlock x:Name="txtboxClienti" VerticalAlignment="Center"></TextBlock>
-            </StackPanel>
+        <StackPanel Spacing="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+        
+            <Button Content="Carica file clienti" Click="OnPercorsoClienti_Click" VerticalAlignment="Center"></Button>
+          
+            <Button Content="Carica file veicoli" Click="OnPercorsoVeicoli_Click" VerticalAlignment="Center"></Button>
 
-            <StackPanel Padding="20" Orientation="Horizontal">
-                <Button Content="Carica" Click="OnPercorsoVeicoli_Click" VerticalAlignment="Center"></Button>
-                <TextBlock x:Name="txtboxVeicoli" VerticalAlignment="Center"></TextBlock>
-            </StackPanel>
-
-            <StackPanel Padding="20" Orientation="Horizontal">
-                <Button Content="Carica" Click="OnPercorsoNoleggi_Click" VerticalAlignment="Center"></Button>
-                <TextBlock x:Name="txtboxNoleggi" VerticalAlignment="Center"></TextBlock>
-            </StackPanel>
+            <Button Content="Carica file noleggi" Click="OnPercorsoNoleggi_Click" VerticalAlignment="Center"></Button>
+       
         </StackPanel>
     </Grid>
 </Page>

@@ -30,19 +30,12 @@
                 <MenuFlyoutItem Text="Aggiorna" Click="OnCsvFileAggiorna_Click"></MenuFlyoutItem>
                 <MenuFlyoutItem Text="Carica" Click="OnCsvFileCarica_Click"></MenuFlyoutItem>
             </MenuBarItem>
-            
+
             <MenuBarItem Title="Aggiungi">
                 <MenuFlyoutItem Text="Noleggio" Click="OnNoleggioMenu_Click"/>
                 <MenuFlyoutItem Text="Cliente" Click="OnClienteMenu_Click"/>
                 <MenuFlyoutItem Text="Automobile" Click="OnAutomobileMenu_Click"/>
                 <MenuFlyoutItem Text="Furgone" Click="OnFurgoneMenu_Click"/>
-            </MenuBarItem>
-
-            <MenuBarItem Title="Rimuovi">
-                <MenuFlyoutItem Text="Noleggio"/>
-                <MenuFlyoutItem Text="Cliente"/>
-                <MenuFlyoutItem Text="Automobile"/>
-                <MenuFlyoutItem Text="Furgone"/>
             </MenuBarItem>
 
             <MenuBarItem Title="Help">

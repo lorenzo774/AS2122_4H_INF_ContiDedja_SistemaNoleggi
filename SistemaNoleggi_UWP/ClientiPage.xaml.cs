@@ -13,6 +13,12 @@ namespace SistemaNoleggi_UWP
         {
             this.InitializeComponent();
             // Aggiorna l'interfaccia grafica per la lista dei clienti
+            if (SistemaNoleggi.Instance.Clienti == null)
+            {
+                ErrorDialog errorDialog = new ErrorDialog("Nessun cliente");
+                errorDialog.Show();
+                return;
+            }
             listViewClienti.ItemsSource = new ObservableCollection<Cliente>(SistemaNoleggi.Instance.Clienti);
         }
 

@@ -22,8 +22,6 @@ namespace Noleggio_Library
             Id = id++;
         }
 
-
-
         public Noleggio() { }
 
         public Noleggio(string csvFormat)
@@ -40,8 +38,7 @@ namespace Noleggio_Library
 
         public decimal CalcolaRicavo()
         {
-            //return Veicolo.TariffaGiornaliera * DurataNoleggio;
-            return 2;
+            return Veicolo.TariffaGiornaliera * DurataNoleggio;
         }
 
         public decimal CalcolaCosto() { return 0; }

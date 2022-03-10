@@ -18,24 +18,24 @@ namespace SistemaNoleggi_UWP
 {
     public sealed partial class PercorsiPage : Page
     {
-        public PercorsiPage()
+        public PercorsiPage()   
         {
             this.InitializeComponent();
-            txtboxClienti.Text = "Percorso: " + ResourceManager.Instance.Paths[(int)PathType.Cliente];
-            txtboxVeicoli.Text = "Percorso: " + ResourceManager.Instance.Paths[(int)PathType.Veicolo];
-            txtboxNoleggi.Text = "Percorso: " + ResourceManager.Instance.Paths[(int)PathType.Noleggio];
         }
 
         private void OnPercorsoClienti_Click(object sender, RoutedEventArgs e)
         {
+            ResourceManager.Instance.Load(FileType.Cliente);
         }
 
         private void OnPercorsoVeicoli_Click(object sender, RoutedEventArgs e)
         {
+            ResourceManager.Instance.Load(FileType.Veicolo);
         }
 
         private void OnPercorsoNoleggi_Click(object sender, RoutedEventArgs e)
         {
+            ResourceManager.Instance.Load(FileType.Noleggio);
         }
     }
 }

@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Windows.Storage.Pickers;
 using Windows.Storage;
 using Noleggio_Library;
-using System.IO;
 
 namespace SistemaNoleggi_UWP
 {
@@ -13,9 +12,8 @@ namespace SistemaNoleggi_UWP
     /// </summary>
     public class ResourceManager
     {
-        public string[] Paths { get; set; }
+        StorageFile[] files;
         static ResourceManager instance;
-
 
         public static ResourceManager Instance
         {
@@ -28,136 +26,143 @@ namespace SistemaNoleggi_UWP
             }
         }
 
-
         public ResourceManager()
         {
-            Paths = new string[3];
+            files = new StorageFile[3];
         }
 
 
-        public void Save(List<Cliente> list)
+        public async void Save(List<Cliente> list)
         {
-            string path = Paths[(int)PathType.Cliente];
-            if (!File.Exists(path)) return;
+            var file = files[(int)FileType.Cliente];
 
-            StreamWriter stream = new StreamWriter(path);
-
-            foreach (Cliente obj in list)
-                stream.WriteLine(obj.CsvFormat());
-
-            stream.Close();
-        }
-        public void Save(List<Veicolo> list)
-        {
-            string path = Paths[(int)PathType.Veicolo];
-            if (!File.Exists(path)) return;
-
-            StreamWriter stream = new StreamWriter(path);
-
-            foreach (Veicolo obj in list)
-                stream.WriteLine(obj.CsvFormat());
-
-            stream.Close();
-        }
-        public void Save(List<Noleggio> list)
-        {
-            string path = Paths[(int)PathType.Noleggio];
-            if (!File.Exists(path)) return;
-
-            StreamWriter stream = new StreamWriter(path);
-
-            foreach (Noleggio obj in list)
-                stream.WriteLine(obj.CsvFormat());
-
-            stream.Close();
-        }
-
-
-        public List<Cliente> RefreshCliente()
-        {
-            string path = Paths[(int)PathType.Cliente];
-            if (!File.Exists(path))
+            if (file == null)
             {
-                ErrorDialog errorDialog = new ErrorDialog("File non trovato, importarne uno nuovo");
-                return null;
+                Message($"File inesistente, path: {file.Path}");
+                return;
             }
 
+            List<string> strList = new List<string>();
+            foreach (Cliente cliente in list)
+                strList.Add(cliente.CsvFormat());
+
+            IEnumerable<string> lines = strList;
+            await FileIO.WriteLinesAsync(file, lines);
+        }
+        public async void Save(List<Veicolo> list)
+        {
+            var file = files[(int)FileType.Veicolo];
+
+            if (file == null)
+            {
+                Message($"File inesistente, path: {file.Path}");
+                return;
+            }
+
+            List<string> strList = new List<string>();
+            foreach (Veicolo veicolo in list)
+                strList.Add(veicolo.CsvFormat());
+
+            IEnumerable<string> lines = strList;
+            await FileIO.WriteLinesAsync(file, lines);
+        }
+        public async void Save(List<Noleggio> list)
+        {
+            var file = files[(int)FileType.Noleggio];
+
+            if (file == null)
+            {
+                Message($"File inesistente, path: {file.Path}");
+                return;
+            }
+
+            List<string> strList = new List<string>();
+            foreach (Noleggio noleggio in list)
+                strList.Add(noleggio.CsvFormat());
+
+            IEnumerable<string> lines = strList;
+            await FileIO.WriteLinesAsync(file, lines);
+        }
+
+
+        public async Task<List<Cliente>> RefreshCliente()
+        {
             List<Cliente> list = new List<Cliente>();
-            StreamReader stream = new StreamReader(path);
 
-            string s;
-            while ((s = stream.ReadLine()) != null)
-                list.Add(new Cliente(s));
-
-            stream.Close();
-            return list;
-        }
-        public List<Veicolo> RefreshVeicolo()
-        {
-            string path = Paths[(int)PathType.Veicolo];
-            if (!File.Exists(path))
+            var file = files[(int)FileType.Cliente];
+            if (file == null)
             {
-                ErrorDialog errorDialog = new ErrorDialog("File non trovato, importarne uno nuovo");
-                return null;
+                Message("File dei clienti inesistente");
+                return new List<Cliente>();
             }
 
+            var readFile = await FileIO.ReadLinesAsync(file);
+            foreach (var str in readFile)
+                list.Add(new Cliente(str));
+
+            return list;
+        }
+        public async Task<List<Veicolo>> RefreshVeicolo()
+        {
             List<Veicolo> list = new List<Veicolo>();
-            StreamReader stream = new StreamReader(path);
 
-            string s;
-            while ((s = stream.ReadLine()) != null)
-                list.Add(new Veicolo(s));
-
-            stream.Close(); 
-            return list;
-        }
-        public List<Noleggio> RefreshNoleggio()
-        {
-            string path = Paths[(int)PathType.Noleggio];
-            if (!File.Exists(path))
+            var file = files[(int)FileType.Veicolo];
+            if (file == null)
             {
-                ErrorDialog errorDialog = new ErrorDialog("File non trovato, importarne uno nuovo");
-                return null;
+                Message("File dei veicoli inesistente");
+                return new List<Veicolo>();
             }
 
+            var readFile = await FileIO.ReadLinesAsync(file);
+            foreach (var str in readFile)
+                list.Add(new Veicolo(str));
+
+            return list;
+        }
+        public async Task<List<Noleggio>> RefreshNoleggio()
+        {
             List<Noleggio> list = new List<Noleggio>();
-            StreamReader stream = new StreamReader(path);
 
-            string s;
-            while ((s = stream.ReadLine()) != null)
-                list.Add(new Noleggio(s));
+            var file = files[(int)FileType.Noleggio];
+            if (file == null)
+            {
+                Message("File dei noleggi inesistente");
+                return new List<Noleggio>();
+            }
 
-            stream.Close();
+            var readFile = await FileIO.ReadLinesAsync(file);
+            foreach (var str in readFile)
+                list.Add(new Noleggio(str));
+
             return list;
         }
 
 
-        public async void Load(PathType pathType)
+        public async void Load(FileType pathType)
         {
             var picker = new FileOpenPicker() { ViewMode = PickerViewMode.Thumbnail };
             picker.FileTypeFilter.Add(".csv");
 
             StorageFile file = await picker.PickSingleFileAsync();
-            Paths[(int)pathType] = file.Path;
+            if (file == null)
+            {
+                Message("File inesistente");
+                return;
+            }
+            files[(int)pathType] = file;
         }
 
-
-        bool checkType<T>(List<T> list)
+        void Message(string msg)
         {
-            if (list.Count > 0)
-                if (list[0] is CsvSerializableObject)
-                    return true;
-
-            return false;
+            ErrorDialog errorDialog = new ErrorDialog(msg);
+            errorDialog.Show();
         }
     }
 
-    public enum PathType
+    public enum FileType
     {
         Cliente,
         Veicolo,
         Noleggio
     }
-
-    public abstract class CsvSerializableObject { }
 }

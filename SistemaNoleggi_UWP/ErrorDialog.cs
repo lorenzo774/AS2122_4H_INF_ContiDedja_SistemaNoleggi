@@ -1,5 +1,6 @@
-﻿using System;
+﻿using System; 
 using Windows.UI.Xaml.Controls;
+using System.Threading.Tasks;
 
 namespace SistemaNoleggi_UWP
 {
@@ -18,7 +19,7 @@ namespace SistemaNoleggi_UWP
             };
         }
 
-        public async void Show()
+        public async Task Show()
         {
             await messageDialog.ShowAsync();
         }
