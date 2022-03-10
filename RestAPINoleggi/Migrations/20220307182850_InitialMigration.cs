@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace DataAccess_Library.Migrations
+namespace RestAPINoleggi.Migrations
 {
     public partial class InitialMigration : Migration
     {

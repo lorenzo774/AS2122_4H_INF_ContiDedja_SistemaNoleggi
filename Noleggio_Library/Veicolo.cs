@@ -3,12 +3,11 @@
     /// <summary>
     /// Un veicolo generico
     /// </summary>
-    public class Veicolo : ICsvSerializable
+    public abstract class Veicolo : ICsvSerializable
     {
         public int Id { get; set; }
         public string Targa { get; protected set; }
         public string Modello { get; protected set; }
-        public bool Disponibile { get; private set; }
 
         // In SQL decimal(9, 4)
         public decimal CostoVeicolo { get; }
@@ -36,12 +35,12 @@
 
         public override string ToString()
         {
-            return $"Targa: {Targa}\t\tModello: {Modello}\t\tCosto: {CostoVeicolo}\t\tTariffa: {TariffaGiornaliera}\t\tDisponibile: {(Disponibile ? "✔️" : "❌")}";
+            return $"Targa: {Targa}\t\tModello: {Modello}\t\tCosto: {CostoVeicolo}\t\tTariffa: {TariffaGiornaliera}";
         }
 
-        public string CsvFormat()
+        public virtual string CsvFormat()
         {
-            return $"{Targa},{Modello},{TariffaGiornaliera.ToString()}";
+            return $"{Targa},{Modello},{TariffaGiornaliera}";
         }
     }
 }

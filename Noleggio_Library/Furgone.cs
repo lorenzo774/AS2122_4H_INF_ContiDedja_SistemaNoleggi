@@ -13,6 +13,8 @@
             Capacita = capacita;
         }
 
+        public Furgone() { }
+
         public Furgone(string csvFormat) : base(csvFormat)
         {
             string[] data = csvFormat.Split(',');
@@ -30,7 +32,7 @@
 
         public string CsvFormat()
         {
-            return $"{Targa},{Modello},{TariffaGiornaliera},{Capacita}";
+            return $"{base.CsvFormat()},{Capacita}";
         }
     }
 }

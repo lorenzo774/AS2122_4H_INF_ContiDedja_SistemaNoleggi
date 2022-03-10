@@ -13,6 +13,8 @@
             NumeroPosti = numeroPosti;
         }
 
+        public Automobile() { }
+
         public Automobile(string csvFormat) : base(csvFormat)
         {
             string[] data = csvFormat.Split(',');
@@ -28,9 +30,9 @@
             return $"{base.ToString()}\t\tPosti: {NumeroPosti}";
         }
 
-        public string CsvFormat()
+        public override string CsvFormat()
         {
-            return $"{Targa},{Modello},{TariffaGiornaliera.ToString()},{NumeroPosti.ToString()}";
+            return $"{base.CsvFormat()},{NumeroPosti}";
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Noleggio_Library;
 
-namespace NoleggiDataAccess_Library.DataAccess
+namespace RestAPINoleggi.Data
 {
     public class NoleggiContext : DbContext
     {

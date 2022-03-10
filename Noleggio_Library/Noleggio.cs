@@ -22,10 +22,9 @@ namespace Noleggio_Library
             Id = id++;
         }
 
-        public Noleggio()
-        {
 
-        }
+
+        public Noleggio() { }
 
         public Noleggio(string csvFormat)
         {
