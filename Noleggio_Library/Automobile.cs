@@ -3,20 +3,25 @@
     /// <summary>
     /// Automobile, derivato da veicolo
     /// </summary>
-    public class Automobile : Veicolo, ICsvSerializable
+    public class Automobile : Veicolo
     {
         public int NumeroPosti { get; private set; }
 
         public Automobile(string targa, string modello, decimal costoVeicolo, decimal tariffaGiornaliera, int numeroPosti)
             : base(targa, modello, costoVeicolo, tariffaGiornaliera)
         {
+            Disponibile = true;
             NumeroPosti = numeroPosti;
         }
 
-        public Automobile() { }
+        public Automobile() 
+        {
+            Disponibile = true;
+        }
 
         public Automobile(string csvFormat) : base(csvFormat)
         {
+            Disponibile = true;
             string[] data = csvFormat.Split(',');
 
             Targa = data[0];

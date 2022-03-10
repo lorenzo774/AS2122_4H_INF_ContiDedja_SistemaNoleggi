@@ -91,10 +91,7 @@ namespace SistemaNoleggi_UWP
 
             var file = files[(int)FileType.Cliente];
             if (file == null)
-            {
-                Message("File dei clienti inesistente");
                 return new List<Cliente>();
-            }
 
             var readFile = await FileIO.ReadLinesAsync(file);
             foreach (var str in readFile)
@@ -108,14 +105,13 @@ namespace SistemaNoleggi_UWP
 
             var file = files[(int)FileType.Veicolo];
             if (file == null)
-            {
-                Message("File dei veicoli inesistente");
                 return new List<Veicolo>();
-            }
 
             var readFile = await FileIO.ReadLinesAsync(file);
             foreach (var str in readFile)
-                list.Add(new Veicolo(str));
+            {
+                list.Add(new Furgone(str));
+            }
 
             return list;
         }
@@ -125,10 +121,7 @@ namespace SistemaNoleggi_UWP
 
             var file = files[(int)FileType.Noleggio];
             if (file == null)
-            {
-                Message("File dei noleggi inesistente");
                 return new List<Noleggio>();
-            }
 
             var readFile = await FileIO.ReadLinesAsync(file);
             foreach (var str in readFile)

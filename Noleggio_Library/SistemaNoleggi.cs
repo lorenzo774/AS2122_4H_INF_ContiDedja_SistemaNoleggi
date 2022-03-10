@@ -95,6 +95,7 @@ namespace Noleggio_Library
         
         public void RimuoviNoleggio(Noleggio noleggio)
         {
+            noleggio.Veicolo.InvertDisponibilite();
             Noleggi.Remove(noleggio);
         }
     }

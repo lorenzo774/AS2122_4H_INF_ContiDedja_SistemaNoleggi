@@ -20,9 +20,14 @@ namespace Noleggio_Library
             this.Cliente = cliente;
             this.Veicolo = veicolo;
             Id = id++;
+
+            Veicolo.InvertDisponibilite();
         }
 
-        public Noleggio() { }
+        public Noleggio()
+        {
+            Veicolo.InvertDisponibilite();
+        }
 
         public Noleggio(string csvFormat)
         {
@@ -33,6 +38,8 @@ namespace Noleggio_Library
             Cliente = SistemaNoleggi.Instance.CercaCliente(data[2]);
             DataInizio = DateTime.Parse(data[3]);
             DurataNoleggio = int.Parse(data[4]);
+
+            Veicolo.InvertDisponibilite();
         }
 
 

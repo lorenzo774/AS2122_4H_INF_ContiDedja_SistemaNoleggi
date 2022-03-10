@@ -3,20 +3,25 @@
     /// <summary>
     /// Furgone, derivato da veicolo
     /// </summary>
-    public class Furgone : Veicolo, ICsvSerializable
+    public class Furgone : Veicolo
     {
         public double Capacita { get; private set; }
 
         public Furgone(string targa, string modello, decimal costoVeicolo, decimal tariffaGiornaliera, double capacita) 
             : base(targa, modello, costoVeicolo, tariffaGiornaliera)
         {
+            Disponibile = true;
             Capacita = capacita;
         }
 
-        public Furgone() { }
+        public Furgone()
+        {
+            Disponibile = true;
+        }
 
         public Furgone(string csvFormat) : base(csvFormat)
         {
+            Disponibile = true;
             string[] data = csvFormat.Split(',');
 
             Targa = data[0];
@@ -30,7 +35,7 @@
             return $"{base.ToString()}\t\tCapacità: {Capacita}kg";
         }
 
-        public string CsvFormat()
+        public override string CsvFormat()
         {
             return $"{base.CsvFormat()},{Capacita}";
         }
