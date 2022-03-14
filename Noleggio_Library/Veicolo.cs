@@ -11,7 +11,7 @@
         public bool Disponibile { get; protected set; }
 
         // In SQL decimal(9, 4)
-        public decimal CostoVeicolo { get; }
+        public decimal CostoVeicolo { get; protected set; }
 
         // In SQL decimal(9, 4)
         public decimal TariffaGiornaliera { get; set; }
@@ -49,7 +49,7 @@
 
         public virtual string CsvFormat()
         {
-            return $"{Targa},{Modello},{TariffaGiornaliera}";
+            return $"{Targa},{Modello},{TariffaGiornaliera},{CostoVeicolo}";
         }
     }
 }

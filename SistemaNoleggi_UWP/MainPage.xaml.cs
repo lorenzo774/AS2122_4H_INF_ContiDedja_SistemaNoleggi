@@ -53,16 +53,16 @@ namespace SistemaNoleggi_UWP
 
         async void UnwrapData()
         {
-            SistemaNoleggi.Instance.Clienti = await ResourceManager.Instance.RefreshCliente();
-            SistemaNoleggi.Instance.Veicoli = await ResourceManager.Instance.RefreshVeicolo();
-            SistemaNoleggi.Instance.Noleggi = await ResourceManager.Instance.RefreshNoleggio();
+            SistemaNoleggi.Instance.Clienti = await ResourceManager.Instance.RefreshClienteAsync();
+            SistemaNoleggi.Instance.Veicoli = await ResourceManager.Instance.RefreshVeicoloAsync();
+            SistemaNoleggi.Instance.Noleggi = await ResourceManager.Instance.RefreshNoleggioAsync();
         }
 
         void SaveData()
         {
-            ResourceManager.Instance.Save(SistemaNoleggi.Instance.Clienti);
-            ResourceManager.Instance.Save(SistemaNoleggi.Instance.Veicoli);
-            ResourceManager.Instance.Save(SistemaNoleggi.Instance.Noleggi);
+            ResourceManager.Instance.SaveAsync(SistemaNoleggi.Instance.Clienti);
+            ResourceManager.Instance.SaveAsync(SistemaNoleggi.Instance.Veicoli);
+            ResourceManager.Instance.SaveAsync(SistemaNoleggi.Instance.Noleggi);
         }
 
         private void OnCsvFileCarica_Click(object sender, RoutedEventArgs e)

@@ -32,13 +32,13 @@ namespace SistemaNoleggi_UWP
         }
 
 
-        public async void Save(List<Cliente> list)
+        public async void SaveAsync(List<Cliente> list)
         {
             var file = files[(int)FileType.Cliente];
 
             if (file == null)
             {
-                Message($"File inesistente, path: {file.Path}");
+                Message($"File per i 'Clienti' inesistente");
                 return;
             }
 
@@ -49,13 +49,13 @@ namespace SistemaNoleggi_UWP
             IEnumerable<string> lines = strList;
             await FileIO.WriteLinesAsync(file, lines);
         }
-        public async void Save(List<Veicolo> list)
+        public async void SaveAsync(List<Veicolo> list)
         {
             var file = files[(int)FileType.Veicolo];
 
             if (file == null)
             {
-                Message($"File inesistente, path: {file.Path}");
+                Message($"File per i 'Veicoli' inesistente");
                 return;
             }
 
@@ -66,13 +66,13 @@ namespace SistemaNoleggi_UWP
             IEnumerable<string> lines = strList;
             await FileIO.WriteLinesAsync(file, lines);
         }
-        public async void Save(List<Noleggio> list)
+        public async void SaveAsync(List<Noleggio> list)
         {
             var file = files[(int)FileType.Noleggio];
 
             if (file == null)
             {
-                Message($"File inesistente, path: {file.Path}");
+                Message($"File per i 'Noleggi' inesistente");
                 return;
             }
 
@@ -85,7 +85,7 @@ namespace SistemaNoleggi_UWP
         }
 
 
-        public async Task<List<Cliente>> RefreshCliente()
+        public async Task<List<Cliente>> RefreshClienteAsync()
         {
             List<Cliente> list = new List<Cliente>();
 
@@ -99,7 +99,7 @@ namespace SistemaNoleggi_UWP
 
             return list;
         }
-        public async Task<List<Veicolo>> RefreshVeicolo()
+        public async Task<List<Veicolo>> RefreshVeicoloAsync()
         {
             List<Veicolo> list = new List<Veicolo>();
 
@@ -109,13 +109,11 @@ namespace SistemaNoleggi_UWP
 
             var readFile = await FileIO.ReadLinesAsync(file);
             foreach (var str in readFile)
-            {
-                list.Add(new Furgone(str));
-            }
+                list.Add(DeserializeVeicolo(str));
 
             return list;
         }
-        public async Task<List<Noleggio>> RefreshNoleggio()
+        public async Task<List<Noleggio>> RefreshNoleggioAsync()
         {
             List<Noleggio> list = new List<Noleggio>();
 
@@ -131,7 +129,7 @@ namespace SistemaNoleggi_UWP
         }
 
 
-        public async void Load(FileType pathType)
+        public async void LoadAsync(FileType pathType)
         {
             var picker = new FileOpenPicker() { ViewMode = PickerViewMode.Thumbnail };
             picker.FileTypeFilter.Add(".csv");
@@ -149,6 +147,17 @@ namespace SistemaNoleggi_UWP
         {
             ErrorDialog errorDialog = new ErrorDialog(msg);
             errorDialog.Show();
+        }
+
+        Veicolo DeserializeVeicolo(string str)
+        {
+            string[] data = str.Split(',');
+
+            // Se i kg di capacitá sono meno di 10 il veicolo verrá valutato come autmomobile
+            if (int.Parse(data[3]) < 10)
+                return new Automobile(str);
+
+            return new Furgone(str);
         }
     }
 

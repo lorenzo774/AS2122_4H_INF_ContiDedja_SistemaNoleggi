@@ -27,7 +27,8 @@
             Targa = data[0];
             Modello = data[1];
             TariffaGiornaliera = decimal.Parse(data[2]);
-            NumeroPosti = int.Parse(data[3]);
+            CostoVeicolo = decimal.Parse(data[3]);
+            NumeroPosti = int.Parse(data[4]);
         }
 
         public override string ToString()
