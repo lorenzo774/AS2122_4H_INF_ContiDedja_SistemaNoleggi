@@ -11,9 +11,10 @@ namespace RestAPINoleggi.DTOs
         public int DurataNoleggio { get; set; }
     
         [Required]
-        public int ClienteId { get; set; }
-
+        public int ClienteId { get; init; }
+        
         [Required]
-        public int VeicoloId { get; set; }
+        public int VeicoloId { get; init; }
+
     }
 }

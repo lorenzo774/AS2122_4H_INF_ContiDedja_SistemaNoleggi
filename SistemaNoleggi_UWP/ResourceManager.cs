@@ -32,13 +32,13 @@ namespace SistemaNoleggi_UWP
         }
 
 
-        public async void SaveAsync(List<Cliente> list)
+        public async void Save(List<Cliente> list)
         {
             var file = files[(int)FileType.Cliente];
 
             if (file == null)
             {
-                Message($"File per i 'Clienti' inesistente");
+                Message($"File inesistente, path: {file.Path}");
                 return;
             }
 
@@ -49,13 +49,13 @@ namespace SistemaNoleggi_UWP
             IEnumerable<string> lines = strList;
             await FileIO.WriteLinesAsync(file, lines);
         }
-        public async void SaveAsync(List<Veicolo> list)
+        public async void Save(List<Veicolo> list)
         {
             var file = files[(int)FileType.Veicolo];
 
             if (file == null)
             {
-                Message($"File per i 'Veicoli' inesistente");
+                Message($"File inesistente, path: {file.Path}");
                 return;
             }
 
@@ -66,13 +66,13 @@ namespace SistemaNoleggi_UWP
             IEnumerable<string> lines = strList;
             await FileIO.WriteLinesAsync(file, lines);
         }
-        public async void SaveAsync(List<Noleggio> list)
+        public async void Save(List<Noleggio> list)
         {
             var file = files[(int)FileType.Noleggio];
 
             if (file == null)
             {
-                Message($"File per i 'Noleggi' inesistente");
+                Message($"File inesistente, path: {file.Path}");
                 return;
             }
 
@@ -85,13 +85,16 @@ namespace SistemaNoleggi_UWP
         }
 
 
-        public async Task<List<Cliente>> RefreshClienteAsync()
+        public async Task<List<Cliente>> RefreshCliente()
         {
             List<Cliente> list = new List<Cliente>();
 
             var file = files[(int)FileType.Cliente];
             if (file == null)
+            {
+                Message("File dei clienti inesistente");
                 return new List<Cliente>();
+            }
 
             var readFile = await FileIO.ReadLinesAsync(file);
             foreach (var str in readFile)
@@ -99,27 +102,33 @@ namespace SistemaNoleggi_UWP
 
             return list;
         }
-        public async Task<List<Veicolo>> RefreshVeicoloAsync()
+        public async Task<List<Veicolo>> RefreshVeicolo()
         {
             List<Veicolo> list = new List<Veicolo>();
 
             var file = files[(int)FileType.Veicolo];
             if (file == null)
+            {
+                Message("File dei veicoli inesistente");
                 return new List<Veicolo>();
+            }
 
             var readFile = await FileIO.ReadLinesAsync(file);
             foreach (var str in readFile)
-                list.Add(DeserializeVeicolo(str));
+                list.Add(new Veicolo(str));
 
             return list;
         }
-        public async Task<List<Noleggio>> RefreshNoleggioAsync()
+        public async Task<List<Noleggio>> RefreshNoleggio()
         {
             List<Noleggio> list = new List<Noleggio>();
 
             var file = files[(int)FileType.Noleggio];
             if (file == null)
+            {
+                Message("File dei noleggi inesistente");
                 return new List<Noleggio>();
+            }
 
             var readFile = await FileIO.ReadLinesAsync(file);
             foreach (var str in readFile)
@@ -129,7 +138,7 @@ namespace SistemaNoleggi_UWP
         }
 
 
-        public async void LoadAsync(FileType pathType)
+        public async void Load(FileType pathType)
         {
             var picker = new FileOpenPicker() { ViewMode = PickerViewMode.Thumbnail };
             picker.FileTypeFilter.Add(".csv");
@@ -147,17 +156,6 @@ namespace SistemaNoleggi_UWP
         {
             ErrorDialog errorDialog = new ErrorDialog(msg);
             errorDialog.Show();
-        }
-
-        Veicolo DeserializeVeicolo(string str)
-        {
-            string[] data = str.Split(',');
-
-            // Se i kg di capacitá sono meno di 10 il veicolo verrá valutato come autmomobile
-            if (int.Parse(data[3]) < 10)
-                return new Automobile(str);
-
-            return new Furgone(str);
         }
     }
 

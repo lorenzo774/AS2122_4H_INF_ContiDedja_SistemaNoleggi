@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Noleggio_Library
 {
@@ -9,8 +10,15 @@ namespace Noleggio_Library
         public int Id { get; private set; }
         public DateTime DataInizio { get; set; }
         public int DurataNoleggio { get; set; }
-        public Cliente Cliente { get; private set; }
-        public Veicolo Veicolo { get; private set; }
+
+        public int ClienteId { get; set; }
+        public int VeicoloId { get; set; }
+
+        [ForeignKey("ClienteId")]
+        public virtual Cliente Cliente { get; set; }
+        
+        [ForeignKey("VeicoloId")]
+        public virtual Veicolo Veicolo { get; set; }
 
 
         public Noleggio(DateTime dataInizio, int durataNoleggio, Cliente cliente, Veicolo veicolo)
@@ -20,14 +28,9 @@ namespace Noleggio_Library
             this.Cliente = cliente;
             this.Veicolo = veicolo;
             Id = id++;
-
-            Veicolo.InvertDisponibilite();
         }
 
-        public Noleggio()
-        {
-            Veicolo.InvertDisponibilite();
-        }
+        public Noleggio() { }
 
         public Noleggio(string csvFormat)
         {
@@ -38,8 +41,6 @@ namespace Noleggio_Library
             Cliente = SistemaNoleggi.Instance.CercaCliente(data[2]);
             DataInizio = DateTime.Parse(data[3]);
             DurataNoleggio = int.Parse(data[4]);
-
-            Veicolo.InvertDisponibilite();
         }
 
 

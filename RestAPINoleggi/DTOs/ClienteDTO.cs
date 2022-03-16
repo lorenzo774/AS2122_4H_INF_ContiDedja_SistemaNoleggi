@@ -6,7 +6,11 @@ namespace RestAPINoleggi.DTOs
     {
         [Required]
         public string Nome { get; set; }
+        
         [Required]
         public string Cognome { get; set; }
+
+        [Required]
+        public string CF { get; set; }
     }
 }
