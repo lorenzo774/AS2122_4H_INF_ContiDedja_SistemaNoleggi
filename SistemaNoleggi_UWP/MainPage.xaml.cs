@@ -50,9 +50,9 @@ namespace SistemaNoleggi_UWP
 
         private async void OnCsvFileAggiorna_Click(object sender, RoutedEventArgs e)
         {
-            SistemaNoleggi.Instance.Clienti = await ResourceManager.Instance.RefreshClienteAsync();
-            SistemaNoleggi.Instance.Veicoli = await ResourceManager.Instance.RefreshVeicoloAsync();
-            SistemaNoleggi.Instance.Noleggi = await ResourceManager.Instance.RefreshNoleggioAsync();
+            SistemaNoleggi.Instance.Clienti = await ResourceManager.Instance.RefreshCliente();
+            SistemaNoleggi.Instance.Veicoli = await ResourceManager.Instance.RefreshVeicolo();
+            SistemaNoleggi.Instance.Noleggi = await ResourceManager.Instance.RefreshNoleggio();
         }
 
         private void OnCsvFileCarica_Click(object sender, RoutedEventArgs e)

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestAPINoleggi.Data;
 
@@ -11,9 +12,10 @@ using RestAPINoleggi.Data;
 namespace RestAPINoleggi.Migrations
 {
     [DbContext(typeof(NoleggiContext))]
-    partial class NoleggiContextModelSnapshot : ModelSnapshot
+    [Migration("20220315133518_AMigration")]
+    partial class AMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

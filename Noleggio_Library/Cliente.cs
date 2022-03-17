@@ -3,7 +3,7 @@
     public class Cliente : ICsvSerializable
     {
         public int Id { get; set; }
-        public string CF { get; private set; }
+        public string CF { get; set; }
         public string Nome { get; set; }
         public string Cognome { get; set; }
 

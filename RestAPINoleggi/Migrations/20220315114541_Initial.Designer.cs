@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestAPINoleggi.Data;
 
@@ -11,9 +12,10 @@ using RestAPINoleggi.Data;
 namespace RestAPINoleggi.Migrations
 {
     [DbContext(typeof(NoleggiContext))]
-    partial class NoleggiContextModelSnapshot : ModelSnapshot
+    [Migration("20220315114541_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,7 +54,7 @@ namespace RestAPINoleggi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("ClienteId")
+                    b.Property<int?>("ClienteId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DataInizio")
@@ -61,7 +63,7 @@ namespace RestAPINoleggi.Migrations
                     b.Property<int>("DurataNoleggio")
                         .HasColumnType("int");
 
-                    b.Property<int>("VeicoloId")
+                    b.Property<int?>("VeicoloId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -130,15 +132,11 @@ namespace RestAPINoleggi.Migrations
                 {
                     b.HasOne("Noleggio_Library.Cliente", "Cliente")
                         .WithMany()
-                        .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ClienteId");
 
                     b.HasOne("Noleggio_Library.Veicolo", "Veicolo")
                         .WithMany()
-                        .HasForeignKey("VeicoloId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("VeicoloId");
 
                     b.Navigation("Cliente");
 
