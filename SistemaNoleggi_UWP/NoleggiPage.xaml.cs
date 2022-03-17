@@ -17,7 +17,7 @@ namespace SistemaNoleggi_UWP
             // Aggiorna l'interfaccia grafica per la lista dei noleggi
             if (SistemaNoleggi.Instance.Noleggi == null)
                 return;
-            }
+            
         }
 
 
