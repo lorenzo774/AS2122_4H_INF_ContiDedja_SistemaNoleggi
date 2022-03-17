@@ -25,17 +25,17 @@ namespace SistemaNoleggi_UWP
 
         private void OnPercorsoClienti_Click(object sender, RoutedEventArgs e)
         {
-            ResourceManager.Instance.Load(FileType.Cliente);
+            ResourceManager.Instance.LoadAsync(FileType.Cliente);
         }
 
         private void OnPercorsoVeicoli_Click(object sender, RoutedEventArgs e)
         {
-            ResourceManager.Instance.Load(FileType.Veicolo);
+            ResourceManager.Instance.LoadAsync(FileType.Veicolo);
         }
 
         private void OnPercorsoNoleggi_Click(object sender, RoutedEventArgs e)
         {
-            ResourceManager.Instance.Load(FileType.Noleggio);
+            ResourceManager.Instance.LoadAsync(FileType.Noleggio);
         }
     }
 }

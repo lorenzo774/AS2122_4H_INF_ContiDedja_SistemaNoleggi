@@ -35,31 +35,21 @@ namespace SistemaNoleggi_UWP
         {
             Frame.Navigate(typeof(AddNoleggioPage));
         }
-        
+
 
 
         private void OnCsvFileSalva_Click(object sender, RoutedEventArgs e)
         {
-            SaveData();
+            ResourceManager.Instance.SaveAsync(SistemaNoleggi.Instance.Clienti);
+            ResourceManager.Instance.SaveAsync(SistemaNoleggi.Instance.Veicoli);
+            ResourceManager.Instance.SaveAsync(SistemaNoleggi.Instance.Noleggi);
         }
 
-        private void OnCsvFileAggiorna_Click(object sender, RoutedEventArgs e)
+        private async void OnCsvFileAggiorna_Click(object sender, RoutedEventArgs e)
         {
-            UnwrapData();
-        }
-
-        async void UnwrapData()
-        {
-            SistemaNoleggi.Instance.Clienti = await ResourceManager.Instance.RefreshCliente();
-            SistemaNoleggi.Instance.Veicoli = await ResourceManager.Instance.RefreshVeicolo();
-            SistemaNoleggi.Instance.Noleggi = await ResourceManager.Instance.RefreshNoleggio();
-        }
-
-        void SaveData()
-        {
-            ResourceManager.Instance.Save(SistemaNoleggi.Instance.Clienti);
-            ResourceManager.Instance.Save(SistemaNoleggi.Instance.Veicoli);
-            ResourceManager.Instance.Save(SistemaNoleggi.Instance.Noleggi);
+            SistemaNoleggi.Instance.Clienti = await ResourceManager.Instance.RefreshClienteAsync();
+            SistemaNoleggi.Instance.Veicoli = await ResourceManager.Instance.RefreshVeicoloAsync();
+            SistemaNoleggi.Instance.Noleggi = await ResourceManager.Instance.RefreshNoleggioAsync();
         }
 
         private void OnCsvFileCarica_Click(object sender, RoutedEventArgs e)

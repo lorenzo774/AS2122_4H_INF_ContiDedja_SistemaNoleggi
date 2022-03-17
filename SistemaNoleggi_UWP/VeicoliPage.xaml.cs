@@ -15,11 +15,8 @@ namespace SistemaNoleggi_UWP
             this.InitializeComponent();
             // Aggiorna l'interfaccia grafica per la lista dei furgoni e delle automobili
             if (SistemaNoleggi.Instance.Veicoli == null)
-            {
-                ErrorDialog errorDialog = new ErrorDialog("Nessuna automobile");
-                errorDialog.Show();
                 return;
-            }
+
             listViewFurgoni.ItemsSource = SistemaNoleggi.Instance.Furgoni;
             listViewAutomobili.ItemsSource = SistemaNoleggi.Instance.Automobili;
         }
@@ -27,20 +24,15 @@ namespace SistemaNoleggi_UWP
         private async void removeAutomobile_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var veicolo = (sender as Button).DataContext as Veicolo; // Ricava l'automobile (Veicolo) presente nell'elemento grafico
-
-            await SistemaNoleggiClient.Instance.RemoveAutomobileAsync(veicolo.Id);
-
-            listViewAutomobili.ItemsSource = new ObservableCollection<Automobile>(await SistemaNoleggiClient.Instance.GetAllAutomobiliAsync());
-            
-            //SistemaNoleggi.Instance.RimuoviVeicolo(veicolo);
-            //// Aggiorna l'interfaccia grafica per la lista delle automobili
-            //if (SistemaNoleggi.Instance.Automobili == null)
-            //{
-            //    ErrorDialog errorDialog = new ErrorDialog("Nessuna automobile");
-            //    errorDialog.Show();
-            //    return;
-            //}
-            //listViewAutomobili.ItemsSource = SistemaNoleggi.Instance.Automobili;
+            SistemaNoleggi.Instance.RimuoviVeicolo(veicolo);
+            // Aggiorna l'interfaccia grafica per la lista delle automobili
+            if (SistemaNoleggi.Instance.Automobili == null)
+            {
+                ErrorDialog errorDialog = new ErrorDialog("Nessuna automobile");
+                errorDialog.Show();
+                return;
+            }
+            listViewAutomobili.ItemsSource = SistemaNoleggi.Instance.Automobili;
         }
 
         private async void removeFurgone_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)

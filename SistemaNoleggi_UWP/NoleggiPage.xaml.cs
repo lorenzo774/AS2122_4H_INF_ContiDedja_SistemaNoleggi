@@ -16,9 +16,6 @@ namespace SistemaNoleggi_UWP
             this.InitializeComponent();
             // Aggiorna l'interfaccia grafica per la lista dei noleggi
             if (SistemaNoleggi.Instance.Noleggi == null)
-            {
-                ErrorDialog errorDialog = new ErrorDialog("Noleggi vuoto");
-                errorDialog.Show();
                 return;
             }
         }
