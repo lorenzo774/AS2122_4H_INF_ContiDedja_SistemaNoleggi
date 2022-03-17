@@ -134,6 +134,7 @@
     <Compile Include="ClientiPage.xaml.cs">
       <DependentUpon>ClientiPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Client\SistemaNoleggiClient.cs" />
     <Compile Include="PercorsiPage.xaml.cs">
       <DependentUpon>PercorsiPage.xaml</DependentUpon>
     </Compile>
@@ -213,6 +214,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls.DataGrid">
       <Version>7.1.2</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

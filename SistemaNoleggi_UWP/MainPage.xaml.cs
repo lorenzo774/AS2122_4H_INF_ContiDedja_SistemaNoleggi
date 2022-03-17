@@ -1,8 +1,6 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Noleggio_Library;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 
 namespace SistemaNoleggi_UWP
 {
@@ -14,7 +12,6 @@ namespace SistemaNoleggi_UWP
         public MainPage()
         {
             this.InitializeComponent();
-
         }
 
         #region MenuBar buttons

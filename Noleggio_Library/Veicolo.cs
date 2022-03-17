@@ -6,11 +6,11 @@
     public class Veicolo : ICsvSerializable
     {
         public int Id { get; set; }
-        public string Targa { get; protected set; }
-        public string Modello { get; protected set; }
+        public string Targa { get; set; }
+        public string Modello { get; set; }
 
         // In SQL decimal(9, 4)
-        public decimal CostoVeicolo { get; }
+        public decimal CostoVeicolo { get; set; }
 
         // In SQL decimal(9, 4)
         public decimal TariffaGiornaliera { get; set; }
@@ -35,7 +35,7 @@
 
         public override string ToString()
         {
-            return $"Targa: {Targa}\t\tModello: {Modello}\t\tCosto: {CostoVeicolo}\t\tTariffa: {TariffaGiornaliera}";
+            return $"Id: {Id}\t\tTarga: {Targa}\t\tModello: {Modello}\t\tCosto: {CostoVeicolo}\t\tTariffa: {TariffaGiornaliera}";
         }
 
         public virtual string CsvFormat()

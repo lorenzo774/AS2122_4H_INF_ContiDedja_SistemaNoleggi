@@ -5,9 +5,7 @@ namespace Noleggio_Library
 {
     public class Noleggio : ICsvSerializable
     {
-        static private int id = 0;
-
-        public int Id { get; private set; }
+        public int Id { get; set; }
         public DateTime DataInizio { get; set; }
         public int DurataNoleggio { get; set; }
 
@@ -27,7 +25,6 @@ namespace Noleggio_Library
             this.DurataNoleggio = durataNoleggio;
             this.Cliente = cliente;
             this.Veicolo = veicolo;
-            Id = id++;
         }
 
         public Noleggio() { }

@@ -1,6 +1,7 @@
 ﻿using Windows.UI.Xaml.Controls;
 using Noleggio_Library;
 using System.Collections.ObjectModel;
+using SistemaNoleggi_UWP.Client;
 
 namespace SistemaNoleggi_UWP
 {
@@ -28,6 +29,12 @@ namespace SistemaNoleggi_UWP
             // Rimuovi il cliente e aggiorna la lista
             SistemaNoleggi.Instance.RimuoviCliente(cliente);
             listViewClienti.ItemsSource = new ObservableCollection<Cliente>(SistemaNoleggi.Instance.Clienti);
+        }
+
+        private async void ClientiPage_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var clienti = await SistemaNoleggiClient.Instance.GetAllClientiAsync();
+            listViewClienti.ItemsSource = new ObservableCollection<Cliente>(clienti);
         }
     }
 }
