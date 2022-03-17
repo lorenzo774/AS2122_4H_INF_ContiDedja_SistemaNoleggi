@@ -13,11 +13,8 @@ namespace SistemaNoleggi_UWP
             this.InitializeComponent();
             // Aggiorna l'interfaccia grafica per la lista dei furgoni e delle automobili
             if (SistemaNoleggi.Instance.Veicoli == null)
-            {
-                ErrorDialog errorDialog = new ErrorDialog("Nessuna automobile");
-                errorDialog.Show();
                 return;
-            }
+
             listViewFurgoni.ItemsSource = SistemaNoleggi.Instance.Furgoni;
             listViewAutomobili.ItemsSource = SistemaNoleggi.Instance.Automobili;
         }
@@ -28,11 +25,8 @@ namespace SistemaNoleggi_UWP
             SistemaNoleggi.Instance.RimuoviVeicolo(veicolo);
             // Aggiorna l'interfaccia grafica per la lista delle automobili
             if (SistemaNoleggi.Instance.Automobili == null)
-            {
-                ErrorDialog errorDialog = new ErrorDialog("Nessuna automobile");
-                errorDialog.Show();
                 return;
-            }
+
             listViewAutomobili.ItemsSource = SistemaNoleggi.Instance.Automobili;
         }
 
@@ -42,11 +36,8 @@ namespace SistemaNoleggi_UWP
             SistemaNoleggi.Instance.RimuoviVeicolo(veicolo);
             // Aggiorna l'interfaccia grafica per la lista dei furgoni
             if (SistemaNoleggi.Instance.Furgoni == null)
-            {
-                ErrorDialog errorDialog = new ErrorDialog("Nessuna automobile");
-                errorDialog.Show();
                 return;
-            }
+
             listViewFurgoni.ItemsSource = SistemaNoleggi.Instance.Furgoni;
         }
     }

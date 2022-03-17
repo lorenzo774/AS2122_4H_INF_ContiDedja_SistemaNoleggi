@@ -32,7 +32,7 @@ namespace SistemaNoleggi_UWP
         }
 
 
-        public async void Save(List<Cliente> list)
+        public async void SaveAsync(List<Cliente> list)
         {
             var file = files[(int)FileType.Cliente];
 
@@ -49,7 +49,7 @@ namespace SistemaNoleggi_UWP
             IEnumerable<string> lines = strList;
             await FileIO.WriteLinesAsync(file, lines);
         }
-        public async void Save(List<Veicolo> list)
+        public async void SaveAsync(List<Veicolo> list)
         {
             var file = files[(int)FileType.Veicolo];
 
@@ -66,7 +66,7 @@ namespace SistemaNoleggi_UWP
             IEnumerable<string> lines = strList;
             await FileIO.WriteLinesAsync(file, lines);
         }
-        public async void Save(List<Noleggio> list)
+        public async void SaveAsync(List<Noleggio> list)
         {
             var file = files[(int)FileType.Noleggio];
 
@@ -85,61 +85,84 @@ namespace SistemaNoleggi_UWP
         }
 
 
-        public async Task<List<Cliente>> RefreshCliente()
+        public async Task<List<Cliente>> RefreshClienteAsync()
         {
             List<Cliente> list = new List<Cliente>();
 
             var file = files[(int)FileType.Cliente];
             if (file == null)
-            {
-                Message("File dei clienti inesistente");
                 return new List<Cliente>();
-            }
 
             var readFile = await FileIO.ReadLinesAsync(file);
             foreach (var str in readFile)
+            {
+                string[] data = str.Split(',');
+
+                // Verifico il tipo del file
+                if (data.Length != 3)
+                {
+                    new ErrorDialog("Alcuni file caricati sono inadeguati").Show();
+                    return null;
+                }
+
                 list.Add(new Cliente(str));
+            }
 
             return list;
         }
-        public async Task<List<Veicolo>> RefreshVeicolo()
+        public async Task<List<Veicolo>> RefreshVeicoloAsync()
         {
             List<Veicolo> list = new List<Veicolo>();
 
             var file = files[(int)FileType.Veicolo];
             if (file == null)
-            {
-                Message("File dei veicoli inesistente");
                 return new List<Veicolo>();
-            }
 
             var readFile = await FileIO.ReadLinesAsync(file);
             foreach (var str in readFile)
-                list.Add(new Furgone(str));
-                //list.Add(DeserializeVeicolo(str));
+            {
+                string[] data = str.Split(',');
+
+                // Verifico il tipo del file
+                if (data.Length != 4)
+                {
+                    new ErrorDialog("Alcuni file caricati sono inadeguati").Show();
+                    return null;
+                }
+
+                list.Add(deserializeVeicolo(str));
+            }
 
             return list;
         }
-        public async Task<List<Noleggio>> RefreshNoleggio()
+        public async Task<List<Noleggio>> RefreshNoleggioAsync()
         {
             List<Noleggio> list = new List<Noleggio>();
 
             var file = files[(int)FileType.Noleggio];
             if (file == null)
-            {
-                Message("File dei noleggi inesistente");
                 return new List<Noleggio>();
-            }
 
             var readFile = await FileIO.ReadLinesAsync(file);
             foreach (var str in readFile)
+            {
+                string[] data = str.Split(',');
+
+                // Verifico il tipo del file
+                if (data.Length != 5)
+                {
+                    new ErrorDialog("Alcuni file caricati sono inadeguati").Show();
+                    return null;
+                }
+                
                 list.Add(new Noleggio(str));
+            }
 
             return list;
         }
 
 
-        public async void Load(FileType pathType)
+        public async void LoadAsync(FileType pathType)
         {
             var picker = new FileOpenPicker() { ViewMode = PickerViewMode.Thumbnail };
             picker.FileTypeFilter.Add(".csv");
@@ -151,7 +174,7 @@ namespace SistemaNoleggi_UWP
             files[(int)pathType] = file;
         }
 
-        Veicolo DeserializeVeicolo(string str)
+        Veicolo deserializeVeicolo(string str)
         {
             string[] data = str.Split(',');
 
