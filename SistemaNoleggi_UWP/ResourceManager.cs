@@ -38,7 +38,7 @@ namespace SistemaNoleggi_UWP
 
             if (file == null)
             {
-                Message($"File per i 'Clienti' inesistente");
+                new ErrorDialog("Fiile inesistente").Show();
                 return;
             }
 
@@ -55,7 +55,7 @@ namespace SistemaNoleggi_UWP
 
             if (file == null)
             {
-                Message($"File per i 'Veicoli' inesistente");
+                new ErrorDialog("Fiile inesistente").Show();
                 return;
             }
 
@@ -72,7 +72,7 @@ namespace SistemaNoleggi_UWP
 
             if (file == null)
             {
-                Message($"File per i 'Noleggi' inesistente");
+                new ErrorDialog("Fiile inesistente").Show();
                 return;
             }
 
@@ -109,7 +109,8 @@ namespace SistemaNoleggi_UWP
 
             var readFile = await FileIO.ReadLinesAsync(file);
             foreach (var str in readFile)
-                list.Add(DeserializeVeicolo(str));
+                list.Add(new Furgone(str));
+                //list.Add(DeserializeVeicolo(str));
 
             return list;
         }
@@ -136,17 +137,9 @@ namespace SistemaNoleggi_UWP
 
             StorageFile file = await picker.PickSingleFileAsync();
             if (file == null)
-            {
-                Message("File inesistente");
                 return;
-            }
-            files[(int)pathType] = file;
-        }
 
-        void Message(string msg)
-        {
-            ErrorDialog errorDialog = new ErrorDialog(msg);
-            errorDialog.Show();
+            files[(int)pathType] = file;
         }
 
         Veicolo DeserializeVeicolo(string str)

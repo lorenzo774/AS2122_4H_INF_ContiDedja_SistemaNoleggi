@@ -10,13 +10,22 @@
 
     <Grid>
         <StackPanel Spacing="20" HorizontalAlignment="Center" VerticalAlignment="Center">
-        
-            <Button Content="Carica file clienti" Click="OnPercorsoClienti_Click" VerticalAlignment="Center"></Button>
-          
-            <Button Content="Carica file veicoli" Click="OnPercorsoVeicoli_Click" VerticalAlignment="Center"></Button>
 
-            <Button Content="Carica file noleggi" Click="OnPercorsoNoleggi_Click" VerticalAlignment="Center"></Button>
-       
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock Text="File Clienti"></TextBlock>
+                <Button HorizontalAlignment="Center" Content="Carica" Click="OnPercorsoClienti_Click" VerticalAlignment="Center"></Button>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock Text="File Noleggi"></TextBlock>
+                <Button HorizontalAlignment="Center" Content="Carica" Click="OnPercorsoNoleggi_Click" VerticalAlignment="Center"></Button>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock Text="File Veicoli"></TextBlock>
+                <Button HorizontalAlignment="Center" Content="Carica" Click="OnPercorsoVeicoli_Click" VerticalAlignment="Center"></Button>
+            </StackPanel>
+
         </StackPanel>
     </Grid>
 </Page>
