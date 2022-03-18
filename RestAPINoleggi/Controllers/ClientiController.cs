@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using RestAPINoleggi.DTOs;
+using Noleggio_Library.DTOs;
 
 namespace RestAPINoleggi.Controllers
 {

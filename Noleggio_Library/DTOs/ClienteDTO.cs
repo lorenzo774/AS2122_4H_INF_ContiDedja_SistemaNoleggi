@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RestAPINoleggi.DTOs
+namespace Noleggio_Library.DTOs
 {
     public class ClienteDTO
     {

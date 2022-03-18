@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using RestAPINoleggi.DTOs;
+using Noleggio_Library.DTOs;
 
 var builder = WebApplication.CreateBuilder(args);
 

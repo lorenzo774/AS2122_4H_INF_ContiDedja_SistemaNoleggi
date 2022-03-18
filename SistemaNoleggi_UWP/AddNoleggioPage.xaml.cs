@@ -2,6 +2,10 @@
 using Windows.UI.Xaml.Controls;
 using Noleggio_Library;
 using System;
+using SistemaNoleggi_UWP.Client;
+using Noleggio_Library.DTOs;
+using System.Collections.ObjectModel;
+using Windows.UI.Xaml.Navigation;
 
 namespace SistemaNoleggi_UWP
 {
@@ -13,12 +17,15 @@ namespace SistemaNoleggi_UWP
         public AddNoleggioPage()
         {
             this.InitializeComponent();
-            // Assegnamento dell'item source delle combox per poter visualizzare la lista di clienti e di veicoli
-            cmbClienti.ItemsSource = SistemaNoleggi.Instance.Clienti;
-            cmbVeicoli.ItemsSource = SistemaNoleggi.Instance.Veicoli;
         }
 
-        private void OnbtnSalva_Click(object sender, RoutedEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            cmbClienti.ItemsSource = new ObservableCollection<Cliente>(await SistemaNoleggiClient.Instance.GetAllClientiAsync());
+            cmbVeicoli.ItemsSource = new ObservableCollection<Veicolo>(SistemaNoleggi.Instance.Veicoli);
+        }
+
+        private async void OnbtnSalva_Click(object sender, RoutedEventArgs e)
         {
             int durata;
 
@@ -29,9 +36,22 @@ namespace SistemaNoleggi_UWP
                 new ErrorDialog().Show();
                 return;
             }
-            
+
+            var cliente = (cmbClienti.SelectedItem as Cliente);
+            var veicolo = (cmbVeicoli.SelectedItem as Veicolo);
+
             // Aggiunta di un noleggio e ritorno alla Page precedente
-            SistemaNoleggi.Instance.AggiungiNoleggio(datepickerData.Date.DateTime, durata, (Cliente)cmbClienti.SelectedItem, (Veicolo)cmbVeicoli.SelectedItem);
+            // TODO: Integrarlo con il sistema sincronizza
+            //SistemaNoleggi.Instance.AggiungiNoleggio(datepickerData.Date.DateTime, durata, (Cliente)cmbClienti.SelectedItem, (Veicolo)cmbVeicoli.SelectedItem);
+
+            await SistemaNoleggiClient.Instance.AddNoleggioAsync(new NoleggioDTO()
+            {
+                DataInizio = datepickerData.Date.DateTime,
+                DurataNoleggio = durata,
+                ClienteId = cliente.Id,
+                VeicoloId = veicolo.Id
+            });
+            
             Frame.GoBack();
         }
 

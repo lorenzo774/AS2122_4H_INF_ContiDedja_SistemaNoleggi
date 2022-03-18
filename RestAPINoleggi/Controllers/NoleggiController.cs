@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using RestAPINoleggi.DTOs;
+using Noleggio_Library.DTOs;
 
 namespace RestAPINoleggi.Controllers
 {

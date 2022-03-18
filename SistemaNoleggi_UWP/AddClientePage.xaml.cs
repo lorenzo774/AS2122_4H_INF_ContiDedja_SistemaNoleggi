@@ -1,6 +1,8 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Noleggio_Library;
+using Noleggio_Library.DTOs;
+using SistemaNoleggi_UWP.Client;
 
 namespace SistemaNoleggi_UWP
 {
@@ -14,7 +16,7 @@ namespace SistemaNoleggi_UWP
             this.InitializeComponent();
         }
 
-        private void OnbtnSalva_Click(object sender, RoutedEventArgs e)
+        private async void OnbtnSalva_Click(object sender, RoutedEventArgs e)
         {
             // Verifica input dell'utente
             if (txtbox_Nome.Text == "" || txtbox_Cognome.Text == "" || txtbox_Cf.Text == "")
@@ -24,7 +26,16 @@ namespace SistemaNoleggi_UWP
             }
 
             // Aggiunta di un cliente e ritorno alla Page precedente
-            SistemaNoleggi.Instance.AggiungiCliente(txtbox_Nome.Text, txtbox_Cognome.Text, txtbox_Cf.Text);
+            // TODO: Integrarlo con il sistema sincronizza
+            //SistemaNoleggi.Instance.AggiungiCliente(txtbox_Nome.Text, txtbox_Cognome.Text, txtbox_Cf.Text);
+
+            await SistemaNoleggiClient.Instance.AddClienteAsync(new ClienteDTO()
+            {
+                CF = txtbox_Cf.Text,
+                Nome = txtbox_Nome.Text,
+                Cognome = txtbox_Cognome.Text
+            });
+            
             Frame.GoBack();
         }
 

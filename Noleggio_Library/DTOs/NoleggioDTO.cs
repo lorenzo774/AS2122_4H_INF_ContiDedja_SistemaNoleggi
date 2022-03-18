@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
-namespace RestAPINoleggi.DTOs
+namespace Noleggio_Library.DTOs
 {
     public class NoleggioDTO
     {
@@ -11,10 +12,10 @@ namespace RestAPINoleggi.DTOs
         public int DurataNoleggio { get; set; }
     
         [Required]
-        public int ClienteId { get; init; }
+        public int ClienteId { get; set; }
         
         [Required]
-        public int VeicoloId { get; init; }
+        public int VeicoloId { get; set; }
 
     }
 }

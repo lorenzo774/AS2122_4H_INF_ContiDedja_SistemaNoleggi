@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RestAPINoleggi.DTOs
+namespace Noleggio_Library.DTOs
 {
     /// <summary>
     /// Interfaccia per implementare un DTO di un veicolo
@@ -8,16 +8,16 @@ namespace RestAPINoleggi.DTOs
     public interface IVeicoloDTO
     {
         [Required]
-        public string Targa { get; set; }
+        string Targa { get; set; }
         [Required]
-        public string Modello { get; set; }
+        string Modello { get; set; }
     
         [Required]
         [DataType("decimal(10, 18)")]
-        public decimal CostoVeicolo { get; set; }
+        decimal CostoVeicolo { get; set; }
 
         [Required]
         [DataType("decimal(10, 18)")]
-        public decimal TariffaGiornaliera { get; set; }
+        decimal TariffaGiornaliera { get; set; }
     }
 }

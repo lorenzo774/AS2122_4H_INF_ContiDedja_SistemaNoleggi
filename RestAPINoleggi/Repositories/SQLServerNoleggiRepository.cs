@@ -1,5 +1,4 @@
-﻿using RestAPINoleggi.DTOs;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using RestAPINoleggi.Data;
 using System.Linq;
 

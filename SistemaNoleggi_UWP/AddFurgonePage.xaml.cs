@@ -1,6 +1,8 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Noleggio_Library;
+using SistemaNoleggi_UWP.Client;
+using Noleggio_Library.DTOs;
 
 namespace SistemaNoleggi_UWP
 {
@@ -14,7 +16,7 @@ namespace SistemaNoleggi_UWP
             this.InitializeComponent();
         }
 
-        private void OnBtnSalva_Click(object sender, RoutedEventArgs e)
+        private async void OnBtnSalva_Click(object sender, RoutedEventArgs e)
         {
             // Valori numerici da assegnare successivamente
             decimal costoVeicolo;
@@ -34,7 +36,18 @@ namespace SistemaNoleggi_UWP
             string modello = txtModello.Text;
 
             // Aggiunta di un furgone e ritorno alla Page precedente
-            SistemaNoleggi.Instance.AggiungiFurgone(targa, modello, costoVeicolo, tariffaGiornaliera, capacita);
+            // TODO: Integrarlo con il sistema sincronizza
+            //SistemaNoleggi.Instance.AggiungiFurgone(targa, modello, costoVeicolo, tariffaGiornaliera, capacita);
+
+            await SistemaNoleggiClient.Instance.AddFurgoneAsync(new FurgoneDTO()
+            {
+                Capacita = capacita,
+                CostoVeicolo = costoVeicolo,
+                Modello = modello,
+                Targa = targa,
+                TariffaGiornaliera = tariffaGiornaliera
+            });
+            
             Frame.GoBack();
         }
 

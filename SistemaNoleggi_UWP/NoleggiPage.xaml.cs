@@ -2,6 +2,8 @@
 using Noleggio_Library;
 using System.Collections.ObjectModel;
 using SistemaNoleggi_UWP.Client;
+using Noleggio_Library.DTOs;
+using Windows.UI.Xaml.Navigation;
 
 namespace SistemaNoleggi_UWP
 {
@@ -17,24 +19,19 @@ namespace SistemaNoleggi_UWP
             // Aggiorna l'interfaccia grafica per la lista dei noleggi
             if (SistemaNoleggi.Instance.Noleggi == null)
                 return;
-            
         }
 
-
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var noleggi = await SistemaNoleggiClient.Instance.GetAllNoleggiAsync();
+            listViewNoleggi.ItemsSource = new ObservableCollection<Noleggio>(noleggi);
+        }
 
         private async void removeNoleggio_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var noleggio = (sender as Button).DataContext as Noleggio; // Ricava il noleggio presente nell'elemento grafico
-
             await SistemaNoleggiClient.Instance.RemoveNoleggioAsync(noleggio.Id);
-
             listViewNoleggi.ItemsSource = new ObservableCollection<Noleggio>(await SistemaNoleggiClient.Instance.GetAllNoleggiAsync());
-        }
-
-        private async void NoleggiPage_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            var noleggi = await SistemaNoleggiClient.Instance.GetAllNoleggiAsync();
-            listViewNoleggi.ItemsSource = new ObservableCollection<Noleggio>(noleggi);
         }
     }
 }
