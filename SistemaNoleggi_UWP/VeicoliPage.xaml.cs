@@ -14,12 +14,6 @@ namespace SistemaNoleggi_UWP
         public VeicoliPage()
         {
             this.InitializeComponent();
-            // Aggiorna l'interfaccia grafica per la lista dei furgoni e delle automobili
-            if (SistemaNoleggi.Instance.Veicoli == null)
-                return;
-
-            listViewFurgoni.ItemsSource = SistemaNoleggi.Instance.Furgoni;
-            listViewAutomobili.ItemsSource = SistemaNoleggi.Instance.Automobili;
         }
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)

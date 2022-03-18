@@ -12,7 +12,6 @@ namespace SistemaNoleggi_UWP
     /// </summary>
     public sealed partial class NoleggiPage : Page
     {
-
         public NoleggiPage()
         {
             this.InitializeComponent();
