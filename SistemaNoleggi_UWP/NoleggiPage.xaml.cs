@@ -10,17 +10,10 @@ namespace SistemaNoleggi_UWP
     /// </summary>
     public sealed partial class NoleggiPage : Page
     {
-
         public NoleggiPage()
         {
             this.InitializeComponent();
-            // Aggiorna l'interfaccia grafica per la lista dei noleggi
-            if (SistemaNoleggi.Instance.Noleggi == null)
-                return;
-            
         }
-
-
 
         private async void removeNoleggio_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
@@ -33,7 +26,13 @@ namespace SistemaNoleggi_UWP
 
         private async void NoleggiPage_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var noleggi = await SistemaNoleggiClient.Instance.GetAllNoleggiAsync();
+            var noleggi = SistemaNoleggi.Instance.Noleggi;
+
+            if (SistemaNoleggi.Instance.IsDatabaseSynchronized)
+            {
+                noleggi = await SistemaNoleggiClient.Instance.GetAllNoleggiAsync();
+            }
+            
             listViewNoleggi.ItemsSource = new ObservableCollection<Noleggio>(noleggi);
         }
     }

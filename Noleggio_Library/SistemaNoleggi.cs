@@ -21,6 +21,8 @@ namespace Noleggio_Library
             }
         }
 
+        public bool IsDatabaseSynchronized { get; set; }
+
         public List<Veicolo> Veicoli { get; set; }
         public List<Noleggio> Noleggi { get; set; }
         public List<Cliente> Clienti { get; set; }

@@ -69,7 +69,7 @@ namespace SistemaNoleggi_UWP
         {
             if (args.IsSettingsSelected)
             {
-
+                ContentFrame.Navigate(typeof(OptionPage));
             }
             else
             {

@@ -2,6 +2,7 @@
 using Windows.UI.Xaml.Controls;
 using Noleggio_Library;
 using System;
+using SistemaNoleggi_UWP.Client;
 
 namespace SistemaNoleggi_UWP
 {
@@ -29,7 +30,7 @@ namespace SistemaNoleggi_UWP
                 new ErrorDialog().Show();
                 return;
             }
-            
+
             // Aggiunta di un noleggio e ritorno alla Page precedente
             SistemaNoleggi.Instance.AggiungiNoleggio(datepickerData.Date.DateTime, durata, (Cliente)cmbClienti.SelectedItem, (Veicolo)cmbVeicoli.SelectedItem);
             Frame.GoBack();
