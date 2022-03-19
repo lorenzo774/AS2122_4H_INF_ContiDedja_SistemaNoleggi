@@ -36,17 +36,19 @@ namespace SistemaNoleggi_UWP
             string modello = txtModello.Text;
 
             // Aggiunta di un furgone e ritorno alla Page precedente
-            // TODO: Integrarlo con il sistema sincronizza
-            //SistemaNoleggi.Instance.AggiungiFurgone(targa, modello, costoVeicolo, tariffaGiornaliera, capacita);
+            SistemaNoleggi.Instance.AggiungiFurgone(targa, modello, costoVeicolo, tariffaGiornaliera, capacita);
 
-            await SistemaNoleggiClient.Instance.AddFurgoneAsync(new FurgoneDTO()
+            if (SistemaNoleggi.Instance.IsDatabaseSynchronized)
             {
-                Capacita = capacita,
-                CostoVeicolo = costoVeicolo,
-                Modello = modello,
-                Targa = targa,
-                TariffaGiornaliera = tariffaGiornaliera
-            });
+                await SistemaNoleggiClient.Instance.AddFurgoneAsync(new FurgoneDTO()
+                {
+                    Capacita = capacita,
+                    CostoVeicolo = costoVeicolo,
+                    Modello = modello,
+                    Targa = targa,
+                    TariffaGiornaliera = tariffaGiornaliera
+                });
+            }
             
             Frame.GoBack();
         }

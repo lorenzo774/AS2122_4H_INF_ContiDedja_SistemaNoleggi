@@ -41,16 +41,18 @@ namespace SistemaNoleggi_UWP
             var veicolo = (cmbVeicoli.SelectedItem as Veicolo);
 
             // Aggiunta di un noleggio e ritorno alla Page precedente
-            // TODO: Integrarlo con il sistema sincronizza
-            //SistemaNoleggi.Instance.AggiungiNoleggio(datepickerData.Date.DateTime, durata, (Cliente)cmbClienti.SelectedItem, (Veicolo)cmbVeicoli.SelectedItem);
+            SistemaNoleggi.Instance.AggiungiNoleggio(datepickerData.Date.DateTime, durata, (Cliente)cmbClienti.SelectedItem, (Veicolo)cmbVeicoli.SelectedItem);
 
-            await SistemaNoleggiClient.Instance.AddNoleggioAsync(new NoleggioDTO()
+            if (SistemaNoleggi.Instance.IsDatabaseSynchronized)
             {
-                DataInizio = datepickerData.Date.DateTime,
-                DurataNoleggio = durata,
-                ClienteId = cliente.Id,
-                VeicoloId = veicolo.Id
-            });
+                await SistemaNoleggiClient.Instance.AddNoleggioAsync(new NoleggioDTO()
+                {
+                    DataInizio = datepickerData.Date.DateTime,
+                    DurataNoleggio = durata,
+                    ClienteId = cliente.Id,
+                    VeicoloId = veicolo.Id
+                });
+            }
             
             Frame.GoBack();
         }

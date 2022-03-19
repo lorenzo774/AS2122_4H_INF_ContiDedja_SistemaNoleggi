@@ -150,7 +150,6 @@
       <DependentUpon>NoleggiPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SaveMode.cs" />
     <Compile Include="VeicoliPage.xaml.cs">
       <DependentUpon>VeicoliPage.xaml</DependentUpon>
     </Compile>

@@ -32,14 +32,14 @@ namespace Noleggio_Library
             get 
             { 
                 return Veicoli.OfType<Automobile>().ToList();
-            } 
+            }
         }
         /// <summary>Restituisce la lista di furgoni presenti nella lista di veicoli</summary>
         public List<Furgone> Furgoni { 
             get 
             {
                 return Veicoli.OfType<Furgone>().ToList();
-            } 
+            }
         }
 
         public SistemaNoleggi()

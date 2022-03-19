@@ -26,15 +26,17 @@ namespace SistemaNoleggi_UWP
             }
 
             // Aggiunta di un cliente e ritorno alla Page precedente
-            // TODO: Integrarlo con il sistema sincronizza
-            //SistemaNoleggi.Instance.AggiungiCliente(txtbox_Nome.Text, txtbox_Cognome.Text, txtbox_Cf.Text);
+            SistemaNoleggi.Instance.AggiungiCliente(txtbox_Nome.Text, txtbox_Cognome.Text, txtbox_Cf.Text);
 
-            await SistemaNoleggiClient.Instance.AddClienteAsync(new ClienteDTO()
+            if (SistemaNoleggi.Instance.IsDatabaseSynchronized)
             {
-                CF = txtbox_Cf.Text,
-                Nome = txtbox_Nome.Text,
-                Cognome = txtbox_Cognome.Text
-            });
+                await SistemaNoleggiClient.Instance.AddClienteAsync(new ClienteDTO()
+                {
+                    CF = txtbox_Cf.Text,
+                    Nome = txtbox_Nome.Text,
+                    Cognome = txtbox_Cognome.Text
+                });
+            }
             
             Frame.GoBack();
         }

@@ -15,22 +15,30 @@ namespace SistemaNoleggi_UWP
         public NoleggiPage()
         {
             this.InitializeComponent();
-            // Aggiorna l'interfaccia grafica per la lista dei noleggi
-            if (SistemaNoleggi.Instance.Noleggi == null)
-                return;
         }
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var noleggi = await SistemaNoleggiClient.Instance.GetAllNoleggiAsync();
-            listViewNoleggi.ItemsSource = new ObservableCollection<Noleggio>(noleggi);
+            if (SistemaNoleggi.Instance.IsDatabaseSynchronized)
+            {
+                SistemaNoleggi.Instance.Noleggi = await SistemaNoleggiClient.Instance.GetAllNoleggiAsync();
+            }
+
+            listViewNoleggi.ItemsSource = new ObservableCollection<Noleggio>(SistemaNoleggi.Instance.Noleggi);
         }
 
         private async void removeNoleggio_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var noleggio = (sender as Button).DataContext as Noleggio; // Ricava il noleggio presente nell'elemento grafico
-            await SistemaNoleggiClient.Instance.RemoveNoleggioAsync(noleggio.Id);
-            listViewNoleggi.ItemsSource = new ObservableCollection<Noleggio>(await SistemaNoleggiClient.Instance.GetAllNoleggiAsync());
+
+            SistemaNoleggi.Instance.RimuoviNoleggio(noleggio);
+
+            if (SistemaNoleggi.Instance.IsDatabaseSynchronized)
+            {
+                await SistemaNoleggiClient.Instance.RemoveNoleggioAsync(noleggio.Id);
+            }
+
+            listViewNoleggi.ItemsSource = new ObservableCollection<Noleggio>(SistemaNoleggi.Instance.Noleggi);
         }
     }
 }

@@ -75,7 +75,7 @@ namespace SistemaNoleggi_UWP.Client
             SistemaNoleggi.Instance.Furgoni.Clear();
             var response = await CallUrlAsync("https://restapinoleggi.azurewebsites.net/api/furgoni");
             var furgoni = JsonConvert.DeserializeObject<List<Furgone>>(response);
-            furgoni.ForEach(a => SistemaNoleggi.Instance.Furgoni.Add(a));
+            furgoni.ForEach(a => SistemaNoleggi.Instance.Veicoli.Add(a));
             return furgoni;
         }
 
@@ -123,7 +123,7 @@ namespace SistemaNoleggi_UWP.Client
         public async Task AddFurgoneAsync(FurgoneDTO furgone)
         {
             var httpContent = ConvertToHttpContent(furgone);
-            await client.PostAsync("https://restapinoleggi.azurewebsites.net/api/furgone", httpContent);
+            await client.PostAsync("https://restapinoleggi.azurewebsites.net/api/furgoni", httpContent);
         }
 
         public async Task AddClienteAsync(ClienteDTO cliente)

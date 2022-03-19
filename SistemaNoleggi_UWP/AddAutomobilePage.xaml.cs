@@ -37,17 +37,19 @@ namespace SistemaNoleggi_UWP
 
             // Aggiunta di un automobile e ritorno alla Page precedente
 
-            // TODO: Integrarlo con il sistema sincronizza
-            //SistemaNoleggi.Instance.AggiungiAutomobile(targa, modello, costoVeicolo, tariffaGiornaliera, numeroPosti);
+            SistemaNoleggi.Instance.AggiungiAutomobile(targa, modello, costoVeicolo, tariffaGiornaliera, numeroPosti);
 
-            await SistemaNoleggiClient.Instance.AddAutomobileAsync(new AutomobileDTO()
+            if (SistemaNoleggi.Instance.IsDatabaseSynchronized)
             {
-                CostoVeicolo = costoVeicolo,
-                Modello = modello,
-                NumeroPosti = numeroPosti,
-                Targa = targa,
-                TariffaGiornaliera = tariffaGiornaliera
-            });
+                await SistemaNoleggiClient.Instance.AddAutomobileAsync(new AutomobileDTO()
+                {
+                    CostoVeicolo = costoVeicolo,
+                    Modello = modello,
+                    NumeroPosti = numeroPosti,
+                    Targa = targa,
+                    TariffaGiornaliera = tariffaGiornaliera
+                });
+            }
             
             Frame.GoBack();
         }
