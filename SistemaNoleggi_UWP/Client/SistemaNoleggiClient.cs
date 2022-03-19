@@ -123,7 +123,7 @@ namespace SistemaNoleggi_UWP.Client
         public async Task AddFurgoneAsync(FurgoneDTO furgone)
         {
             var httpContent = ConvertToHttpContent(furgone);
-            await client.PostAsync("https://restapinoleggi.azurewebsites.net/api/furgone", httpContent);
+            await client.PostAsync("https://restapinoleggi.azurewebsites.net/api/furgoni", httpContent);
         }
 
         public async Task AddClienteAsync(ClienteDTO cliente)
