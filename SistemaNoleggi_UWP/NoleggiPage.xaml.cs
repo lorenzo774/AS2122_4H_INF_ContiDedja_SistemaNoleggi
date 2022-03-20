@@ -7,9 +7,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace SistemaNoleggi_UWP
 {
-    /// <summary>
-    /// Pagina che mostra la lista di noleggi nel sistema
-    /// </summary>
+    /// <summary>Pagina che mostra la lista di noleggi nel sistema</summary>
     public sealed partial class NoleggiPage : Page
     {
         public NoleggiPage()

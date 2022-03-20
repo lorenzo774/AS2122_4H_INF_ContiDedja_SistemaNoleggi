@@ -6,9 +6,7 @@ using SistemaNoleggi_UWP.Client;
 
 namespace SistemaNoleggi_UWP
 {
-    /// <summary>
-    /// Pagina per aggiungere un nuovo cliente
-    /// </summary>
+    /// <summary>Pagina per aggiungere un nuovo cliente</summary>
     public sealed partial class AddClientePage : Page
     {
         public AddClientePage()
@@ -26,7 +24,8 @@ namespace SistemaNoleggi_UWP
             }
 
             // Aggiunta di un cliente e ritorno alla Page precedente
-            SistemaNoleggi.Instance.AggiungiCliente(txtbox_Nome.Text, txtbox_Cognome.Text, txtbox_Cf.Text);
+            Cliente newCliente = new Cliente(txtbox_Nome.Text, txtbox_Cognome.Text, txtbox_Cf.Text);
+            SistemaNoleggi.Instance.AggiungiCliente(newCliente);
 
             if (SistemaNoleggi.Instance.IsDatabaseSynchronized)
             {

@@ -5,9 +5,7 @@ using Noleggio_Library;
 
 namespace SistemaNoleggi_UWP
 {
-    /// <summary>
-    /// Pagina vuota che può essere usata autonomamente oppure per l'esplorazione all'interno di un frame.
-    /// </summary>
+    /// <summary>Pagina vuota che può essere usata autonomamente oppure per l'esplorazione all'interno di un frame</summary>
     public sealed partial class OptionPage : Page
     {
         public OptionPage()

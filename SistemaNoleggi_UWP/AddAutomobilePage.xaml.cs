@@ -6,9 +6,7 @@ using SistemaNoleggi_UWP.Client;
 
 namespace SistemaNoleggi_UWP
 {
-    /// <summary>
-    /// Pagina per aggiungere una nuova automobile
-    /// </summary>
+    /// <summary>Pagina per aggiungere una nuova automobile</summary>
     public sealed partial class AddAutomobilePage : Page
     {
         public AddAutomobilePage()
@@ -36,8 +34,8 @@ namespace SistemaNoleggi_UWP
             string modello = txtModello.Text;
 
             // Aggiunta di un automobile e ritorno alla Page precedente
-
-            SistemaNoleggi.Instance.AggiungiAutomobile(targa, modello, costoVeicolo, tariffaGiornaliera, numeroPosti);
+            Automobile newAutomobile = new Automobile(targa, modello, costoVeicolo, tariffaGiornaliera, numeroPosti);
+            SistemaNoleggi.Instance.AggiungiAutomobile(newAutomobile);
 
             if (SistemaNoleggi.Instance.IsDatabaseSynchronized)
             {

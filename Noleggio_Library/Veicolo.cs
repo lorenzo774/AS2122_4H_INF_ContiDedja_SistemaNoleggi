@@ -1,8 +1,6 @@
 ﻿namespace Noleggio_Library
 {
-    /// <summary>
-    /// Un veicolo genericoq
-    /// </summary>
+    /// <summary>Un veicolo generico</summary>
     public class Veicolo : ICsvSerializable
     {
         public int Id { get; set; }
@@ -16,14 +14,9 @@
         public decimal TariffaGiornaliera { get; set; }
 
 
-        public Veicolo(string csvFormat)
-        {
-        }
+        public Veicolo(string csvFormat) { }
 
-        public Veicolo()
-        {
-
-        }
+        public Veicolo() { }
 
         public Veicolo(string targa, string modello, decimal costoVeicolo, decimal tariffaGiornaliera)
         {

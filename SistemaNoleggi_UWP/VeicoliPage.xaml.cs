@@ -6,9 +6,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace SistemaNoleggi_UWP
 {
-    /// <summary>
-    /// Pagina che mostra la lista delle automobili e dei furgoni del sistema
-    /// </summary>
+    /// <summary>Pagina che mostra la lista delle automobili e dei furgoni del sistema</summary>
     public sealed partial class VeicoliPage : Page
     {
         public VeicoliPage()

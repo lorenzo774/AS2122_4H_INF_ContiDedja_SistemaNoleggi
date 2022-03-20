@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Noleggio_Library
 {
-    /// <summary>
-    /// Classe principale per il sistema noleggi
-    /// </summary>
+    /// <summary>Classe principale per il sistema noleggi</summary>
     public class SistemaNoleggi
     {
         private static SistemaNoleggi instance;
@@ -33,13 +30,16 @@ namespace Noleggio_Library
             { 
                 return Veicoli.OfType<Automobile>().ToList();
             }
+            set { }
         }
+
         /// <summary>Restituisce la lista di furgoni presenti nella lista di veicoli</summary>
         public List<Furgone> Furgoni { 
             get 
             {
                 return Veicoli.OfType<Furgone>().ToList();
             }
+            set { }
         }
 
         public SistemaNoleggi()
@@ -50,51 +50,55 @@ namespace Noleggio_Library
         }
 
 
+        /// <summary>Restituisce un veicolo dalla lista veicoli attraverso una targa</summary>
         public Veicolo CercaVeicolo(string targa)
         {
             return Veicoli.FirstOrDefault(v => v.Targa == targa);
         }
 
-        /// <param name="cF">Codice fiscale</param>
+        /// <summary>Restituisce un cliente dalla lista clienti attraverso un codice fiscale</summary>
         public Cliente CercaCliente(string cF)
         {
             return Clienti.FirstOrDefault(v => v.CF == cF);
         }
 
-        /// <param name="cF">Codice fiscale</param>
-        public void AggiungiCliente(string nome, string cognome, string cF)
+        /// <summary>Aggiunge un cliente alla lista di clienti</summary>
+        public void AggiungiCliente(Cliente cliente)
         {
-            Clienti.Add(new Cliente(nome, cognome, cF));
+            Clienti.Add(cliente);
         }
 
         /// <summary>Aggiunge un automobile alla lista di automobili</summary>
-        public void AggiungiAutomobile(string targa, string modello, decimal costo, decimal tariffaGiornaliera, int numeroPosti)
+        public void AggiungiAutomobile(Automobile automobile)
         {
-            Veicoli.Add(new Automobile(targa, modello, costo, tariffaGiornaliera, numeroPosti));
+            Veicoli.Add(automobile);
         }
 
         /// <summary>Aggiunge un furgone alla lista di furgoni</summary>
-        public void AggiungiFurgone(string targa, string modello, decimal costo, decimal tariffaGiornaliera, double capacita)
+        public void AggiungiFurgone(Furgone furgone)
         {
-            Veicoli.Add(new Furgone(targa, modello, costo, tariffaGiornaliera, capacita));
+            Veicoli.Add(furgone);
         }
 
         /// <summary>Aggiunge un furgone alla lista di furgoni</summary>
-        public void AggiungiNoleggio(DateTime dataInizio, int durataGiorni, Cliente cliente, Veicolo veicolo)
+        public void AggiungiNoleggio(Noleggio noleggio)
         {
-            Noleggi.Add(new Noleggio(dataInizio, durataGiorni, cliente, veicolo));
+            Noleggi.Add(noleggio);
         }
 
+        /// <summary>Rimuove un cliente dalla lista di clienti</summary>
         public void RimuoviCliente(Cliente cliente)
         {
             Clienti.Remove(cliente);
         }
 
+        /// <summary>Rimuove un veicolo dalla lista di veicoli</summary>
         public void RimuoviVeicolo(Veicolo veicolo)
         {
             Veicoli.Remove(veicolo);
         }
         
+        /// <summary>Rimuove un noleggio dalla lista di noleggi</summary>
         public void RimuoviNoleggio(Noleggio noleggio)
         {
             Noleggi.Remove(noleggio);

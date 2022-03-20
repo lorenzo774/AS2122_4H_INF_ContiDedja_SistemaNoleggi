@@ -32,6 +32,7 @@ namespace SistemaNoleggi_UWP
         }
 
 
+        /// <summary>Permette di salvare la lista dei clienti in modalità asincrona</summary>
         public async void SaveAsync(List<Cliente> list)
         {
             var file = files[(int)FileType.Cliente];
@@ -49,6 +50,8 @@ namespace SistemaNoleggi_UWP
             IEnumerable<string> lines = strList;
             await FileIO.WriteLinesAsync(file, lines);
         }
+
+        /// <summary>Permette di salvare la lista dei veicoli in modalità asincrona</summary>
         public async void SaveAsync(List<Veicolo> list)
         {
             var file = files[(int)FileType.Veicolo];
@@ -66,6 +69,8 @@ namespace SistemaNoleggi_UWP
             IEnumerable<string> lines = strList;
             await FileIO.WriteLinesAsync(file, lines);
         }
+
+        /// <summary>Permette di salvare la lista dei noleggi in modalità asincrona</summary>
         public async void SaveAsync(List<Noleggio> list)
         {
             var file = files[(int)FileType.Noleggio];
@@ -85,6 +90,7 @@ namespace SistemaNoleggi_UWP
         }
 
 
+        /// <summary>Permette di aggiornare la lista dei clienti in modalità asincrona</summary>
         public async Task<List<Cliente>> RefreshClienteAsync()
         {
             List<Cliente> list = new List<Cliente>();
@@ -110,6 +116,8 @@ namespace SistemaNoleggi_UWP
 
             return list;
         }
+
+        /// <summary>Permette di aggiornare la lista dei veicoli in modalità asincrona</summary>
         public async Task<List<Veicolo>> RefreshVeicoloAsync()
         {
             List<Veicolo> list = new List<Veicolo>();
@@ -135,6 +143,8 @@ namespace SistemaNoleggi_UWP
 
             return list;
         }
+
+        /// <summary>Permette di aggiornare la lista dei noleggi in modalità asincrona</summary>
         public async Task<List<Noleggio>> RefreshNoleggioAsync()
         {
             List<Noleggio> list = new List<Noleggio>();
@@ -162,6 +172,7 @@ namespace SistemaNoleggi_UWP
         }
 
 
+        /// <summary>Permette di caricare dei file nell'applicazione in modalità asincrona</summary>
         public async void LoadAsync(FileType pathType)
         {
             var picker = new FileOpenPicker() { ViewMode = PickerViewMode.Thumbnail };

@@ -1,9 +1,7 @@
 ﻿namespace Noleggio_Library
 {
-    /// <summary>
-    /// Furgone, derivato da veicolo
-    /// </summary>
-    public class Furgone : Veicolo, ICsvSerializable
+    /// <summary>Furgone, derivato da veicolo</summary>
+    public class Furgone : Veicolo
     {
         public double Capacita { get; private set; }
 
@@ -30,7 +28,7 @@
             return $"{base.ToString()}\t\tCapacità: {Capacita}kg";
         }
 
-        public string CsvFormat()
+        public override string CsvFormat()
         {
             return $"{base.CsvFormat()},{Capacita}";
         }

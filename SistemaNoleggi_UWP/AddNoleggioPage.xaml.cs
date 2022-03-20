@@ -9,9 +9,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace SistemaNoleggi_UWP
 {
-    /// <summary>
-    /// Pagina per aggiungere un nuovo noleggio
-    /// </summary>
+    /// <summary>Pagina per aggiungere un nuovo noleggio</summary>
     public sealed partial class AddNoleggioPage : Page
     {
         public AddNoleggioPage()
@@ -41,7 +39,8 @@ namespace SistemaNoleggi_UWP
             var veicolo = (cmbVeicoli.SelectedItem as Veicolo);
 
             // Aggiunta di un noleggio e ritorno alla Page precedente
-            SistemaNoleggi.Instance.AggiungiNoleggio(datepickerData.Date.DateTime, durata, (Cliente)cmbClienti.SelectedItem, (Veicolo)cmbVeicoli.SelectedItem);
+            Noleggio newNoleggio = new Noleggio(datepickerData.Date.DateTime, durata, cliente, veicolo);
+            SistemaNoleggi.Instance.AggiungiNoleggio(newNoleggio);
 
             if (SistemaNoleggi.Instance.IsDatabaseSynchronized)
             {

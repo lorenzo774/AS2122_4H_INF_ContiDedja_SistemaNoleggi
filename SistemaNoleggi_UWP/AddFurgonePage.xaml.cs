@@ -6,9 +6,7 @@ using Noleggio_Library.DTOs;
 
 namespace SistemaNoleggi_UWP
 {
-    /// <summary>
-    /// Pagina per aggiungere un nuovo furgone
-    /// </summary>
+    /// <summary>Pagina per aggiungere un nuovo furgone</summary>
     public sealed partial class AddFurgonePage : Page
     {
         public AddFurgonePage()
@@ -36,7 +34,8 @@ namespace SistemaNoleggi_UWP
             string modello = txtModello.Text;
 
             // Aggiunta di un furgone e ritorno alla Page precedente
-            SistemaNoleggi.Instance.AggiungiFurgone(targa, modello, costoVeicolo, tariffaGiornaliera, capacita);
+            Furgone newFurgone = new Furgone(targa, modello, costoVeicolo, tariffaGiornaliera, capacita);
+            SistemaNoleggi.Instance.AggiungiFurgone(newFurgone);
 
             if (SistemaNoleggi.Instance.IsDatabaseSynchronized)
             {
